@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
+<repositories xmlns="" version="1.0">
+  <repo quality="experimental" status="unofficial">
+    <name><![CDATA[brother-overlay]]></name>
+    <description lang="en"><![CDATA[Brother Overlay]]></description>
+    <homepage>http://github.com/stefan-langenmaier/brother-overlay</homepage>
+    <owner type="person">
+      <email>stefan.langenmaier@gmail.com</email>
+      <name><![CDATA[Stefan Langenmaier]]></name>
+    </owner>
+    <source type="git">git://github.com/stefan-langenmaier/brother-overlay.git</source>
+    <feed>http://github.com/stefan-langenmaier/brother-overlay/commits/master.atom</feed>
+  </repo>
+</repositories>
