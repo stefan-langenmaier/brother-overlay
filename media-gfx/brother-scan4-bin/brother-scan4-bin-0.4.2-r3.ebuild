@@ -9,7 +9,7 @@ EAPI=5
 inherit rpm versionator
 
 
-MY_PVR="${PVR}"
+MY_PR="3"
 MY_PN=brscan4
 
 DESCRIPTION="Brother scanner tool (brscan4) 64bit"
@@ -17,12 +17,13 @@ DESCRIPTION="Brother scanner tool (brscan4) 64bit"
 HOMEPAGE="http://support.brother.com"
 
 #this version is for x86_64
-SRC_URI="amd64? ( http://download.brother.com/welcome/dlf006648/${MY_PN}-${MY_PVR}-1.x86_64.rpm ) "
+SRC_URI="amd64? ( http://download.brother.com/welcome/dlf006648/${MY_PN}-${PV}-${MY_PR}.x86_64.rpm )
+x86? (	http://download.brother.com/welcome/dlf006647/${MY_PN}-${PV}-${MY_PR}.i386.rpm ) "
 LICENSE="GPL-2"
 
 SLOT="0"
 
-KEYWORDS="-* amd64"
+KEYWORDS="-* x86 amd64"
 
 IUSE=""
 
