@@ -28,7 +28,8 @@ IUSE=""
 RESTRICT="mirror strip"
 
 DEPEND="media-gfx/sane-backends[usb]"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	dev-libs/libusb-compat"
 
 S=${WORKDIR}
 
