@@ -8,11 +8,10 @@ EAPI=5
 
 inherit rpm versionator
 
-
 MY_PR="3"
 MY_PN=brscan4
 
-DESCRIPTION="Brother scanner tool (brscan4) 64bit"
+DESCRIPTION="Brother scanner tool (brscan4)"
 
 HOMEPAGE="http://support.brother.com"
 
@@ -29,7 +28,8 @@ IUSE=""
 
 RESTRICT="mirror strip"
 
-DEPEND="media-gfx/sane-backends[usb]"
+DEPEND="dev-libs/libusb-compat
+	media-gfx/sane-backends[usb]"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}
@@ -40,24 +40,17 @@ src_unpack() {
 
 src_install() {
 	cp -r usr "${D}" || die
+	cp -r etc "${D}" || die
+	cp -r opt "${D}" || die
 
+	# so no files from the sane package are touched
 	mkdir -p "${D}/etc/sane.d/dll.d"
 	echo "brother4" >"${D}/etc/sane.d/dll.d/brscan4.conf"
 }
 
 pkg_postinst() {
-	"${ROOT}/opt/brother/scanner/brscan4/setupSaneScan4" -i
-	#this is already done with the previous line
-	#einfo "In order to use scanner you need to add it first with setupSaneScan4."
+	einfo "Example with MFC-7460DN over network:"
+	einfo "	/opt/brother/scanner/brscan4/brsaneconfig4 -a name=mfcscan model=MFC-7460DN ip=192.168.10.6"
 
-	einfo "Example with MFC-9340CW over network:"
-	einfo "	/opt/brother/scanner/brscan4/brsaneconfig4 -a name=mfcscan model=MFC-9340CW ip=192.168.10.6"
-	einfo "	chmod 644 /opt/brother/scanner/brscan4/brsanenetdevice4.cfg"
-
-	#only for usb access
-#	elog "You may need to be in the scanner or plugdev group in order to use the scanner"
-}
-
-pkg_prerm() {
-	${ROOT}/opt/brother/scanner/brscan4/setupSaneScan4 -e
+	elog "You may need to be in the scanner or plugdev group in order to use the scanner"
 }
