@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit rpm
+inherit eutils rpm linux-info
 
 DESCRIPTION="Brother printer driver for MFC-7460DN"
 
@@ -17,16 +17,27 @@ LICENSE="brother-eula GPL-2"
 
 SLOT="0"
 
-KEYWORDS="x86"
+KEYWORDS="amd64 x86"
 
-IUSE=""
+IUSE="avahi"
 
 RESTRICT="mirror strip"
 
-DEPEND="net-print/cups"
+DEPEND="net-print/cups
+	avahi? ( net-dns/avahi
+		sys-auth/nss-mdns )"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}
+
+pkg_setup() {
+	CONFIG_CHECK=""
+	if use amd64; then
+		CONFIG_CHECK="${CONFIG_CHECK} ~IA32_EMULATION"
+	fi
+
+	linux-info_pkg_setup
+}
 
 src_unpack() {
 	rpm_unpack ${A}
@@ -51,3 +62,10 @@ src_install() {
 	mkdir -p ${D}/usr/share/cups/model || die
 	( cd ${D}/usr/share/cups/model && ln -s ../../../../opt/brother/Printers/BrGenML1/cupswrapper/brother-BrGenML1-cups-en.ppd ) || die
 }
+
+pkg_postinst() {
+        einfo "If you don't use avahi with nss-mdns you have to use a static IP addresss in your printer confiugration"
+        einfo "If you want to use a broadcasted name add .local to it"
+        einfo "You can test if it's working with ping printername.local"
+}
+
