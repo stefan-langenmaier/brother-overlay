@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils rpm linux-info
+inherit eutils rpm linux-info multilib
 
 DESCRIPTION="Generic Brother printer driver for DCP-7060D, DCP-7065DN, DCP-8080DN, DCP-L2520DW, DCP-L2540DW, HL-2230, HL-2240, HL-2240D, HL-2270DW, HL-2280DW, HL-5370DW/HL-5370DWT, HL-5440D, HL-5450DN, HL-5470DW, HL-6180DW, HL-L2320D, HL-L2360DW, HL-L2380DW, MFC-7360N, MFC-7460DN, MFC-7860DW, MFC-8480DN, MFC-8510DN, MFC-8710DW, MFC-8890DW, MFC-8910DW, MFC-8950DW, MFC-L2700DW, MFC-L2720DW, MFC-L2740DW"
 
@@ -34,6 +34,9 @@ pkg_setup() {
 	CONFIG_CHECK=""
 	if use amd64; then
 		CONFIG_CHECK="${CONFIG_CHECK} ~IA32_EMULATION"
+		if ! has_multilib_profile; then
+			die "This package CANNOT be installed on pure 64-bit system. You need multilib enabled."
+		fi
 	fi
 
 	linux-info_pkg_setup
