@@ -8,7 +8,7 @@ EAPI=5
 
 inherit rpm versionator
 
-MY_PR="0"
+MY_PR="2"
 MY_PN=brscan4
 
 DESCRIPTION="Brother scanner tool (brscan4)"
