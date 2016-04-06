@@ -11,7 +11,7 @@ DESCRIPTION="Brother printer driver for MFC-9330CDW"
 HOMEPAGE="http://support.brother.com"
 
 SRC_URI="http://download.brother.com/welcome/dlf100399/mfc9330cdwlpr-1.1.2-1.i386.rpm
-	http://download.brother.com/welcome/dlf100401/mfc9330cdwcupswrapper-1.1.2-1.i386.rpm"
+http://download.brother.com/welcome/dlf100401/mfc9330cdwcupswrapper-1.1.2-1.i386.rpm"
 
 LICENSE="brother-eula"
 
@@ -29,21 +29,21 @@ RDEPEND="${DEPEND}"
 S=${WORKDIR}
 
 src_unpack() {
-	rpm_unpack ${A}
+  rpm_unpack ${A}
 }
 
 src_install() {
-	has_multilib_profile && ABI=x86
+  has_multilib_profile && ABI=x86
 
-	dosbin "${WORKDIR}/usr/bin/brprintconf_mfc9330cdw"
+  dosbin "${WORKDIR}/usr/bin/brprintconf_mfc9330cdw"
 
-	cp -r usr "${D}" || die
-	cp -r opt "${D}" || die
+  cp -r usr "${D}" || die
+  cp -r opt "${D}" || die
 
 
-	mkdir -p ${D}/usr/libexec/cups/filter || die
-	( cd ${D}/usr/libexec/cups/filter/ && ln -s ../../../../opt/brother/Printers/mfc9330cdw/lpd/filtermfc9330cdw brlpdwrappermfc9330cdw ) || die
+  mkdir -p ${D}/usr/libexec/cups/filter || die
+  ( cd ${D}/usr/libexec/cups/filter/ && ln -s ../../../../opt/brother/Printers/mfc9330cdw/lpd/filtermfc9330cdw brother_lpdwrapper_mfc9330cdw ) || die
 
-	mkdir -p ${D}/usr/share/cups/model || die
-	( cd ${D}/usr/share/cups/model && ln -s ../../../../opt/brother/Printers/mfc9330cdw/cupswrapper/brother_mfc9330cdw_printer_en.ppd ) || die
+  mkdir -p ${D}/usr/share/cups/model || die
+  ( cd ${D}/usr/share/cups/model && ln -s ../../../../opt/brother/Printers/mfc9330cdw/cupswrapper/brother_mfc9330cdw_printer_en.ppd ) || die
 }
