@@ -19,11 +19,14 @@ SLOT="0"
 
 KEYWORDS="amd64"
 
-IUSE=""
+IUSE="+avahi"
 
 RESTRICT="mirror strip"
 
-DEPEND="net-print/cups"
+DEPEND="net-print/cups
+	avahi? ( sys-auth/nss-mdns
+		net-dns/avahi
+		)"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}
@@ -47,3 +50,14 @@ src_install() {
 	mkdir -p ${D}/usr/share/cups/model || die
 	( cd ${D}/usr/share/cups/model && ln -s ../../../../opt/brother/Printers/mfc9320cw/cupswrapper/brother_mfc9320cw_printer_en.ppd ) || die
 }
+
+
+pkg_postinst() {
+        einfo "You have to hardcode the ip address in Cups"
+        einfo "except if you have the avahi use flag enabled"
+        einfo "then you have to edit the file /etc/nsswitch.conf and modify the hosts line"
+	einfo "hosts:       files mdns_minimal dns mdns"
+	einfo "and you have to add .local to the printer name in cups, like ldp://BRN1234.local/BINARY_P1"
+
+}
+

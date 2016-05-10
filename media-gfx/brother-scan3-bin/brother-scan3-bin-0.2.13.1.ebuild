@@ -15,13 +15,13 @@ DESCRIPTION="Brother scanner driver (brscan3)"
 
 HOMEPAGE="http://support.brother.com"
 
-#this version is only for x86_64 available
-SRC_URI="amd64? ( http://download.brother.com/welcome/dlf006644/${MY_PN}-${MY_PV}.x86_64.rpm ) "
+SRC_URI="amd64? ( http://download.brother.com/welcome/dlf006644/${MY_PN}-${MY_PV}.x86_64.rpm )
+           x86? ( http://download.brother.com/welcome/dlf006643/${MY_PN}-${MY_PV}.i386.rpm ) "
 LICENSE="GPL-2"
 
 SLOT="0"
 
-KEYWORDS="-* amd64"
+KEYWORDS="-* amd64 x86"
 
 IUSE=""
 
