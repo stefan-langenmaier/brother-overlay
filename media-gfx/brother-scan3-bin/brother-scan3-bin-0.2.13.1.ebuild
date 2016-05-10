@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
-EAPI=5
+EAPI=6
 
 #based on ebuilds from the funtoo and flow overlay
 
@@ -16,7 +16,7 @@ DESCRIPTION="Brother scanner driver (brscan3)"
 HOMEPAGE="http://support.brother.com"
 
 SRC_URI="amd64? ( http://download.brother.com/welcome/dlf006644/${MY_PN}-${MY_PV}.x86_64.rpm )
-           x86? ( http://download.brother.com/welcome/dlf006643/${MY_PN}-${MY_PV}.i386.rpm ) "
+	x86? ( http://download.brother.com/welcome/dlf006643/${MY_PN}-${MY_PV}.i386.rpm ) "
 LICENSE="GPL-2"
 
 SLOT="0"
@@ -29,7 +29,7 @@ RESTRICT="mirror strip"
 
 DEPEND="media-gfx/sane-backends[usb]"
 RDEPEND="${DEPEND}
-	dev-libs/libusb-compat"
+	virtual/libusb:0"
 
 S=${WORKDIR}
 
@@ -40,14 +40,12 @@ src_unpack() {
 src_install() {
 	cp -r usr "${D}" || die
 
-	mkdir -p "${D}/etc/sane.d/dll.d"
-	echo "brother3" >"${D}/etc/sane.d/dll.d/brscan3.conf"
+	mkdir -p "${D}/etc/sane.d/dll.d" || die
+	echo "brother3" >"${D}/etc/sane.d/dll.d/brscan3.conf" || die
 }
 
 pkg_postinst() {
-	"${ROOT}/usr/local/Brother/sane/setupSaneScan3" -i
-	#this is already done with the previous line
-	#einfo "In order to use scanner you need to add it first with setupSaneScan3."
+	"${ROOT}/usr/local/Brother/sane/setupSaneScan3" -i || die
 
 	einfo "Example with MFC-7440N over network:"
 	einfo "	/usr/local/Brother/sane/brsaneconfig3 -a name=MFC-7440N model=MFC-7440N ip=192.168.250.4"
@@ -59,5 +57,5 @@ pkg_postinst() {
 }
 
 pkg_prerm() {
-	${ROOT}/usr/local/Brother/sane/setupSaneScan3 -e
+	"${ROOT}/usr/local/Brother/sane/setupSaneScan3" -e || die
 }
