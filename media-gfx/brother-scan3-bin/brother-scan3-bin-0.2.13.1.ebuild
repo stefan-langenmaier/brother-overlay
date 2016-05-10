@@ -11,7 +11,7 @@ inherit rpm versionator
 MY_PV="$(replace_version_separator 3 -)"
 MY_PN=brscan3
 
-DESCRIPTION="Brother scanner driver (brscan)"
+DESCRIPTION="Brother scanner driver (brscan3)"
 
 HOMEPAGE="http://support.brother.com"
 
