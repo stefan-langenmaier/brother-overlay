@@ -119,7 +119,6 @@ function get_brscan_models() {
 
 # Generate meta package for model [$1: model, $2: output directory, $3: package name, $4: package version, $5: package category, $6: package ebuild]
 function generate_meta_package() {
-
 	local devmodel="$1"
 	local devid=$(model2id "$devmodel")
 
@@ -133,7 +132,6 @@ function generate_meta_package() {
 	print_result
 
 	[ "$DEBUGGING" == "true" ] && echo -e "\n\033[1;33m*** DEBUG ***\n\033[0mmodel: $devmodel, id: $devid, name: $pkgname, file: $pkgfile, path: $pkgpath\n$pkgdata\n"
-
 }
 
 # Generate ebuild manifest [$1: ebuild]
