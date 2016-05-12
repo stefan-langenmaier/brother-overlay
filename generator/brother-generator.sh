@@ -2,7 +2,7 @@
 
 # -----------------------------------
 #  Created by Fonic
-#  Date: 05/11/16
+#  Date: 05/12/16
 # -----------------------------------
 
 # -----------------------------------
@@ -89,7 +89,7 @@ EOD
 #  Functions
 # -----------------------------------
 
-# Evaluate and print result [$?: result]
+# Evaluate and print result [$?: exitcode]
 function print_result() {
 	if [ $? -eq 0 ]; then
 		echo -e "\033[1;32mok\033[0m"
@@ -98,7 +98,7 @@ function print_result() {
 	fi
 }
 
-# Generate id for model [$1: model]
+# Convert model to id [$1: model]
 function model2id() {
 	local id="$1"
 	id=${id/-/}
@@ -106,7 +106,7 @@ function model2id() {
 	echo $id
 }
 
-# Generate list of models supported by brscan [$@: command]
+# Generate list of models supported by brscan [$@: query command]
 function get_brscan_models() {
 	local regex="[0-9]+ \"([A-Z0-9-]+)\""
 	local line
@@ -164,7 +164,7 @@ for model in $BRGENML1_MODELS; do
 	[ "$DEBUGGING" == "true" ] && break
 done
 
-# Generate manifests
+# Generate ebuild manifests
 for ebuild in $(find -type f -name '*.ebuild' 2>/dev/null); do
 	generate_ebuild_manifest "$ebuild"
 done
