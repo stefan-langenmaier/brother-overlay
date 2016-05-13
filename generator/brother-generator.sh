@@ -26,6 +26,7 @@ read -d '' BRSCAN3_EBUILD << EOD
 EAPI="6"
 
 DESCRIPTION="Scanner driver for Brother %model% (brscan3)"
+HOMEPAGE="http://support.brother.com"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
@@ -52,6 +53,7 @@ read -d '' BRSCAN4_EBUILD << EOD
 EAPI="6"
 
 DESCRIPTION="Scanner driver for Brother %model% (brscan4)"
+HOMEPAGE="http://support.brother.com"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
@@ -78,6 +80,7 @@ read -d '' BRGENML1_EBUILD << EOD
 EAPI="6"
 
 DESCRIPTION="Printer driver for Brother %model% (brgenml1)"
+HOMEPAGE="http://support.brother.com"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
