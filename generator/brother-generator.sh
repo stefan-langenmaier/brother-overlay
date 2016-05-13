@@ -21,7 +21,7 @@ BRSCAN3_CATEGORY="media-gfx"
 read -d '' BRSCAN3_EBUILD << EOD
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# \$Id$
+# \$Id\$
 
 EAPI="6"
 
@@ -44,7 +44,7 @@ read -d '' BRSCAN3_METADATA << EOD
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <!--
-# $Id$
+# \$Id\$
 -->
 <pkgmetadata>
 <longdescription>Scanner driver for Brother %model% (brscan3)</longdescription>
@@ -60,7 +60,7 @@ BRSCAN4_CATEGORY="media-gfx"
 read -d '' BRSCAN4_EBUILD << EOD
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# \$Id$
+# \$Id\$
 
 EAPI="6"
 
@@ -83,7 +83,7 @@ read -d '' BRSCAN4_METADATA << EOD
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <!--
-# $Id$
+# \$Id\$
 -->
 <pkgmetadata>
 <longdescription>Scanner driver for Brother %model% (brscan4)</longdescription>
@@ -99,7 +99,7 @@ BRGENML1_CATEGORY="net-print"
 read -d '' BRGENML1_EBUILD << EOD
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# \$Id$
+# \$Id\$
 
 EAPI="6"
 
@@ -116,7 +116,7 @@ read -d '' BRGENML1_METADATA << EOD
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <!--
-# $Id$
+# \$Id\$
 -->
 <pkgmetadata>
 <longdescription>Generic printer driver for Brother %model% (brgenml1)</longdescription>
@@ -153,7 +153,7 @@ function get_brscan_models() {
 		if [[ $line =~ $regex ]]; then
 			echo ${BASH_REMATCH[1]}
 		fi
-	done < <($@)
+	done < <($@ 2>/dev/null)
 }
 
 # Generate meta package for model [$1: model, $2: output directory, $3: package name, $4: package version, $5: package category, $6: package ebuild, $7: package metadata]
@@ -171,7 +171,7 @@ function generate_meta_package() {
 	mkdir -p "$pkgpath" &>/dev/null && echo "$pkgdata" 2>/dev/null >"$pkgpath/$pkgfile" && echo "$pkgmetadata" 2>/dev/null >"$pkgpath/metadata.xml"
 	print_result
 
-	[ "$DEBUGGING" == "true" ] && echo -e "\n\033[1;33m*** DEBUG ***\n\033[0mmodel: $devmodel, id: $devid, name: $pkgname, file: $pkgfile, path: $pkgpath\n$pkgdata\n"
+	[ "$DEBUGGING" == "true" ] && echo -e "\033[1;33m*** DEBUG ***\n\033[0;1mmodel:\033[0m $devmodel, \033[1mid:\033[0m $devid, \033[1mname:\033[0m $pkgname, \033[1mfile:\033[0m $pkgfile, \033[1mpath:\033[0m $pkgpath\n\033[1mdata:\033[0m $pkgdata\n\033[1mmetadata:\033[0m $pkgmetadata\n"
 }
 
 # Generate ebuild manifest [$1: ebuild]
