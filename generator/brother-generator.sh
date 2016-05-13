@@ -205,6 +205,10 @@ for model in $BRGENML1_MODELS; do
 done
 
 # Generate ebuild manifests
+IFS=$'\n'
 for ebuild in $(find -type f -name '*.ebuild' 2>/dev/null); do
 	generate_ebuild_manifest "$ebuild"
 done
+
+# Count generated packages
+echo -e "\n-> total number of packages: $(find -type f -name '*.ebuild' 2>/dev/null | wc -l 2>/dev/null)\n"
