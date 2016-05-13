@@ -211,4 +211,4 @@ for ebuild in $(find -type f -name '*.ebuild' 2>/dev/null); do
 done
 
 # Count generated packages
-echo -e "\n-> total number of packages: $(find -type f -name '*.ebuild' 2>/dev/null | wc -l 2>/dev/null)\n"
+echo -e "\n-> packages brscan3: $(find "$BRSCAN3_OUTDIR" -type f -name '*.ebuild' 2>/dev/null | wc -l 2>/dev/null), brscan4: $(find "$BRSCAN4_OUTDIR" -type f -name '*.ebuild' 2>/dev/null | wc -l 2>/dev/null), brgenml1: $(find "$BRSCAN3_OUTDIR" -type f -name '*.ebuild' 2>/dev/null | wc -l 2>/dev/null), total: $(find -type f -name '*.ebuild' 2>/dev/null | wc -l 2>/dev/null)\n"
