@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!--
+# $Id$
+-->
+<pkgmetadata>
+<longdescription>Generic Brother printer driver for DCP-7060D, DCP-7065DN, DCP-8080DN, DCP-L2520DW, DCP-L2540DW, HL-2230, HL-2240, HL-2240D, HL-2270DW, HL-2280DW, HL-5370DW/HL-5370DWT, HL-5440D, HL-5450DN, HL-5470DW, HL-6180DW, HL-L2320D, HL-L2360DW, HL-L2380DW, MFC-7360N, MFC-7460DN, MFC-7860DW, MFC-8480DN, MFC-8510DN, MFC-8710DW, MFC-8890DW, MFC-8910DW, MFC-8950DW, MFC-L2700DW, MFC-L2720DW, MFC-L2740DW</longdescription>
+<use>
+	<flag name="avahi">Uses <pkg>net-dns/avahi</pkg> and <pkg>sys-auth/nss-mdns</pkg> to find printers with dynamically assigned IP addresses by name</flag>
+</use>
+</pkgmetadata>
