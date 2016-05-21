@@ -50,6 +50,7 @@ src_prepare() {
 	# adapted from the archlinux package
 	# https://aur.archlinux.org/packages/brother-brgenml1/
 	epatch "${FILESDIR}/brother_lpdwrapper_BrGenML1.patch"
+	default
 }
 
 src_install() {
