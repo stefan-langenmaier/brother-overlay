@@ -1,6 +1,6 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=5
 
@@ -40,9 +40,9 @@ src_install() {
 	cp -r usr "${D}" || die
 	cp -r opt "${D}" || die
 
-	mkdir -p ${D}/usr/libexec/cups/filter || die
-	( cd ${D}/usr/libexec/cups/filter/ && ln -s ../../../../opt/brother/Printers/hll8350cdw/lpd/filterhll8350cdw brother_lpdwrapper_hll8350cdw ) || die
+	mkdir -p "${D}/usr/libexec/cups/filter" || die
+	( cd "${D}/usr/libexec/cups/filter/" && ln -s ../../../../opt/brother/Printers/hll8350cdw/lpd/filterhll8350cdw brother_lpdwrapper_hll8350cdw ) || die
 
-	mkdir -p ${D}/usr/share/cups/model || die
-	( cd ${D}/usr/share/cups/model && ln -s ../../../../opt/brother/Printers/hll8350cdw/cupswrapper/brother_hll8350cdw_printer_en.ppd ) || die
+	mkdir -p "${D}/usr/share/cups/model" || die
+	( cd "${D}/usr/share/cups/model" && ln -s ../../../../opt/brother/Printers/hll8350cdw/cupswrapper/brother_hll8350cdw_printer_en.ppd ) || die
 }

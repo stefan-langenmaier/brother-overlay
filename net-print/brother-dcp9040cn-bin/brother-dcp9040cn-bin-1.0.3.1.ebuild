@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=5
 
@@ -46,30 +46,29 @@ src_unpack() {
 
 src_prepare() {
 	perl -i -pe 'BEGIN{$stop=0} $stop = !$stop if /ENDOFWFILTER/; if(!$stop) {s/\$1/\$2/g;s!/usr!\$1/usr!;s!/etc!\$1/etc!}' \
-	  usr/local/Brother/Printer/${MY_PRINTER}/cupswrapper/cupswrapperSetup_${MY_PRINTER}
+	  "usr/local/Brother/Printer/${MY_PRINTER}/cupswrapper/cupswrapperSetup_${MY_PRINTER}"
 }
 
 src_install() {
-	mkdir -p ${D}/usr/local/Brother/Printer/${MY_PRINTER}/cupswrapper || die
-	mkdir -p ${D}/usr/lib/cups/filter || die
-	mkdir -p ${D}/usr/share/ppd || die
+	mkdir -p "${D}/usr/local/Brother/Printer/${MY_PRINTER}/cupswrapper" || die
+	mkdir -p "${D}/usr/lib/cups/filter" || die
+	mkdir -p "${D}/usr/share/ppd" || die
 	cp -r usr "${D}" || die
 
-	chmod 755 ${D}/usr/local/Brother/Printer/${MY_PRINTER}/lpd || die
-	chmod 755 ${D}/usr/local/Brother/Printer/${MY_PRINTER}/inf || die
-	chmod 755 ${D}/usr/local/Brother/Printer/${MY_PRINTER}/ || die
-	chmod 755 ${D}/usr/local/Brother/Printer/ || die
-	chmod 755 ${D}/usr/local/Brother || die
+	chmod 755 "${D}/usr/local/Brother/Printer/${MY_PRINTER}/lpd" || die
+	chmod 755 "${D}/usr/local/Brother/Printer/${MY_PRINTER}/inf" || die
+	chmod 755 "${D}/usr/local/Brother/Printer/${MY_PRINTER}/" || die
+	chmod 755 "${D}/usr/local/Brother/Printer/" || die
+	chmod 755 "${D}/usr/local/Brother" || die
 
-	${D}/usr/local/Brother/Printer/${MY_PRINTER}/cupswrapper/cupswrapperSetup_${MY_PRINTER} ${D} || die
-	chmod 755 ${D}/usr/local/Brother/Printer/${MY_PRINTER}/cupswrapper || die
+	"${D}/usr/local/Brother/Printer/${MY_PRINTER}/cupswrapper/cupswrapperSetup_${MY_PRINTER}" "${D}" || die
+	chmod 755 "${D}/usr/local/Brother/Printer/${MY_PRINTER}/cupswrapper" || die
 
-	mkdir -p ${D}/var/spool/lpd || die
-	mkdir -p ${D}/usr/libexec/cups/filter || die
-	( ln -s ${D}/usr/lib64/cups/filter/brlpdwrapper${MY_PRINTER} ${D}/usr/libexec/cups/filter/brlpdwrapper${MY_PRINTER} ) || die
+	mkdir -p "${D}/var/spool/lpd" || die
+	mkdir -p "${D}/usr/libexec/cups/filter" || die
+	( ln -s "${D}/usr/lib64/cups/filter/brlpdwrapper${MY_PRINTER}" "${D}/usr/libexec/cups/filter/brlpdwrapper${MY_PRINTER}" ) || die
 }
 
 pkg_postinst() {
-        einfo "Brother ${PRINTER_NAME} printer installed"
+	einfo "Brother ${PRINTER_NAME} printer installed"
 }
-

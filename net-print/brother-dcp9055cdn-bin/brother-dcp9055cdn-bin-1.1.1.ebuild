@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=5
 
@@ -46,26 +46,24 @@ src_prepare() {
 	return
 }
 
-
 src_install() {
-	mkdir -p ${D}/usr/local/Brother/Printer/dcp9055cdn/cupswrapper || die
+	mkdir -p "${D}/usr/local/Brother/Printer/dcp9055cdn/cupswrapper" || die
 	cp -r usr "${D}" || die
 
-	chmod 755 ${D}/usr/local/Brother/Printer/dcp9055cdn/lpd || die
-	chmod 755 ${D}/usr/local/Brother/Printer/dcp9055cdn/inf || die
-	chmod 755 ${D}/usr/local/Brother/Printer/dcp9055cdn/ || die
-	chmod 755 ${D}/usr/local/Brother/Printer/ || die
-	chmod 755 ${D}/usr/local/Brother || die
+	chmod 755 "${D}/usr/local/Brother/Printer/dcp9055cdn/lpd" || die
+	chmod 755 "${D}/usr/local/Brother/Printer/dcp9055cdn/inf" || die
+	chmod 755 "${D}/usr/local/Brother/Printer/dcp9055cdn/" || die
+	chmod 755 "${D}/usr/local/Brother/Printer/" || die
+	chmod 755 "${D}/usr/local/Brother" || die
 
-	${D}/usr/local/Brother/Printer/dcp9055cdn/cupswrapper/cupswrapperdcp9055cdn || die
-	chmod 755 ${D}/usr/local/Brother/Printer/dcp9055cdn/cupswrapper || die
+	"${D}/usr/local/Brother/Printer/dcp9055cdn/cupswrapper/cupswrapperdcp9055cdn" || die
+	chmod 755 "${D}/usr/local/Brother/Printer/dcp9055cdn/cupswrapper" || die
 
-	mkdir -p ${D}/var/spool/lpd || die
-	mkdir -p ${D}/usr/lib64/cups/filter || die
-	( ln -s ${D}/usr/lib64/cups/filter/brlpdwrapperdcp9055cdn ${D}/usr/libexec/cups/filter/brlpdwrapperdcp9055cdn ) || die
+	mkdir -p "${D}/var/spool/lpd" || die
+	mkdir -p "${D}/usr/lib64/cups/filter" || die
+	( ln -s "${D}/usr/lib64/cups/filter/brlpdwrapperdcp9055cdn" "${D}/usr/libexec/cups/filter/brlpdwrapperdcp9055cdn" ) || die
 }
 
 pkg_postinst() {
-        einfo "Brother DCP-9055CDN printer installed"
+	einfo "Brother DCP-9055CDN printer installed"
 }
-

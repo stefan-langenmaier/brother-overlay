@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=5
 
@@ -39,9 +39,9 @@ src_install() {
 
 	cp -r usr "${D}" || die
 
-	mkdir -p ${D}/usr/libexec/cups/filter || die
-	( cd ${D}/usr/libexec/cups/filter/ && ln -s ../../../../usr/local/Brother/Printer/hl4570cdw/lpd/filterhl4570cdw brlpdwrapperhl4570cdw ) || die
+	mkdir -p "${D}/usr/libexec/cups/filter" || die
+	( cd "${D}/usr/libexec/cups/filter/" && ln -s ../../../../usr/local/Brother/Printer/hl4570cdw/lpd/filterhl4570cdw brlpdwrapperhl4570cdw ) || die
 
-	mkdir -p ${D}/usr/share/cups/model || die
-	( cd ${D}/usr/share/cups/model && ln -s ../../../../usr/local/Brother/Printer/hl4570cdw/cupswrapper/hl4570cdw.ppd ) || die
+	mkdir -p "${D}/usr/share/cups/model" || die
+	( cd "${D}/usr/share/cups/model" && ln -s ../../../../usr/local/Brother/Printer/hl4570cdw/cupswrapper/hl4570cdw.ppd ) || die
 }

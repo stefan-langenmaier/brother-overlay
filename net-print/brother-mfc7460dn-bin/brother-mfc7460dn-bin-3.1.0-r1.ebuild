@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=5
 
@@ -49,23 +49,20 @@ src_prepare() {
 	epatch "${FILESDIR}/brother_lpdwrapper_BrGenML1.patch"
 }
 
-
 src_install() {
 	cp -r var "${D}" || die
 	cp -r opt "${D}" || die
 	cp -r etc "${D}" || die
 
+	mkdir -p "${D}/usr/libexec/cups/filter" || die
+	( cd "${D}/usr/libexec/cups/filter/" && ln -s ../../../../opt/brother/Printers/BrGenML1/cupswrapper/brother_lpdwrapper_BrGenML1 ) || die
 
-	mkdir -p ${D}/usr/libexec/cups/filter || die
-	( cd ${D}/usr/libexec/cups/filter/ && ln -s ../../../../opt/brother/Printers/BrGenML1/cupswrapper/brother_lpdwrapper_BrGenML1 ) || die
-
-	mkdir -p ${D}/usr/share/cups/model || die
-	( cd ${D}/usr/share/cups/model && ln -s ../../../../opt/brother/Printers/BrGenML1/cupswrapper/brother-BrGenML1-cups-en.ppd ) || die
+	mkdir -p "${D}/usr/share/cups/model" || die
+	( cd "${D}/usr/share/cups/model" && ln -s ../../../../opt/brother/Printers/BrGenML1/cupswrapper/brother-BrGenML1-cups-en.ppd ) || die
 }
 
 pkg_postinst() {
-        einfo "If you don't use avahi with nss-mdns you have to use a static IP addresss in your printer confiugration"
-        einfo "If you want to use a broadcasted name add .local to it"
-        einfo "You can test if it's working with ping printername.local"
+	einfo "If you don't use avahi with nss-mdns you have to use a static IP addresss in your printer confiugration"
+	einfo "If you want to use a broadcasted name add .local to it"
+	einfo "You can test if it's working with ping printername.local"
 }
-

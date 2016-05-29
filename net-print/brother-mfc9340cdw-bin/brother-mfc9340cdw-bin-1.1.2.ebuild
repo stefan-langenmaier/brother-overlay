@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=5
 
@@ -29,21 +29,20 @@ RDEPEND="${DEPEND}"
 S=${WORKDIR}
 
 src_unpack() {
-rpm_unpack ${A}
+	rpm_unpack ${A}
 }
 
 src_install() {
-has_multilib_profile && ABI=x86
+	has_multilib_profile && ABI=x86
 
-dosbin "${WORKDIR}/usr/bin/brprintconf_mfc9340cdw"
+	dosbin "${WORKDIR}/usr/bin/brprintconf_mfc9340cdw"
 
-cp -r usr "${D}" || die
-cp -r opt "${D}" || die
+	cp -r usr "${D}" || die
+	cp -r opt "${D}" || die
 
+	mkdir -p "${D}/usr/libexec/cups/filter" || die
+	( cd "${D}/usr/libexec/cups/filter/" && ln -s ../../../../opt/brother/Printers/mfc9340cdw/lpd/filtermfc9340cdw brother_lpdwrapper_mfc9340cdw ) || die
 
-mkdir -p ${D}/usr/libexec/cups/filter || die
-( cd ${D}/usr/libexec/cups/filter/ && ln -s ../../../../opt/brother/Printers/mfc9340cdw/lpd/filtermfc9340cdw brother_lpdwrapper_mfc9340cdw ) || die
-
-mkdir -p ${D}/usr/share/cups/model || die
-( cd ${D}/usr/share/cups/model && ln -s ../../../../opt/brother/Printers/mfc9340cdw/cupswrapper/brother_mfc9340cdw_printer_en.ppd ) || die
+	mkdir -p "${D}/usr/share/cups/model" || die
+	( cd "${D}/usr/share/cups/model" && ln -s ../../../../opt/brother/Printers/mfc9340cdw/cupswrapper/brother_mfc9340cdw_printer_en.ppd ) || die
 }
