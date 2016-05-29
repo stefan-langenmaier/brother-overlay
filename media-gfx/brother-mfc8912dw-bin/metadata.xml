@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!--
+# $Id$
+-->
+<pkgmetadata>
+<longdescription>Scanner driver for Brother MFC-8912DW (brscan4)</longdescription>
+</pkgmetadata>

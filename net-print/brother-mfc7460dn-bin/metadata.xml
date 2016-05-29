@@ -4,7 +4,5 @@
 # $Id$
 -->
 <pkgmetadata>
-<longdescription>Printer driver for Brother MFC-7460DN</longdescription>
-<use>
-</use>
+<longdescription>Generic printer driver for Brother MFC-7460DN (brgenml1)</longdescription>
 </pkgmetadata>
