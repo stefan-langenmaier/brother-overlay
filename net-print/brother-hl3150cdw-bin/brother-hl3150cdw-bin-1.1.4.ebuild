@@ -53,14 +53,14 @@ src_install() {
 	cp -r usr "${D}" || die
 
 	mkdir -p "${D}/usr/libexec/cups/filter" || die
-	( cd "${D}/usr/libexec/cups/filter/" && ln -s ../../../../opt/brother/Printers/hl3150cdw/lpd/filterhl3150cdw brlpdwrapperhl3150cdw  ) || die
+	( cd "${D}/usr/libexec/cups/filter/" && ln -s ../../../../opt/brother/Printers/hl3150cdw/lpd/filterhl3150cdw brother_lpdwrapper_hl3150cdw ) || die
 
 	mkdir -p "${D}/usr/share/cups/model" || die
 	( cd "${D}/usr/share/cups/model" && ln -s ../../../../opt/brother/Printers/hl3150cdw/cupswrapper/brother_hl3150cdw_printer_en.ppd ) || die
 }
 
 pkg_postinst() {
-	einfo "If you don't use avahi with nss-mdns you have to use a static IP addresss in your printer configuration"
-	einfo "If you want to use a broadcasted name add .local to it"
+	einfo "If you don't use avahi with nss-mdns, you'll have to use a static IP address in your printer configuration"
+	einfo "If you want to use a broadcasted name, add .local to it"
 	einfo "You can test if it's working with ping printername.local"
 }
