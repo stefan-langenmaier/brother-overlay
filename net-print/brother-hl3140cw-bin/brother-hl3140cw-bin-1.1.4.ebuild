@@ -49,6 +49,7 @@ src_unpack() {
 src_install() {
 	dosbin "${WORKDIR}/usr/bin/brprintconf_hl3140cw"
 
+	cp -r opt "${D}" || die
 	cp -r usr "${D}" || die
 
 	mkdir -p "${D}/usr/libexec/cups/filter" || die
