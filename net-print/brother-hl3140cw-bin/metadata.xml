@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!--
+# $Id$
+-->
+<pkgmetadata>
+<longdescription>Brother printer driver for HL3140CW</longdescription>
+<use>
+	<flag name="avahi">Uses <pkg>net-dns/avahi</pkg> and <pkg>sys-auth/nss-mdns</pkg> to find printers with dynamically assigned IP addresses by name</flag>
+</use>
+</pkgmetadata>
