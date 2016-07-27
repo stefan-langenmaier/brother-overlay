@@ -66,7 +66,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "If you don't use avahi with nss-mdns you have to use a static IP addresss in your printer configuration"
-	einfo "If you want to use a broadcasted name add .local to it"
+	einfo "If you don't use avahi with nss-mdns, you'll have to use a static IP address in your printer configuration"
+	einfo "If you want to use a broadcasted name, add .local to it"
 	einfo "You can test if it's working with ping printername.local"
 }
