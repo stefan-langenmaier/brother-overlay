@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>gentoo@wintermoon.de</email>
+    <name>Chris Morgenstern</name>
+  </maintainer>
+  <longdescription>Brother MFC-J880DW lpr+cupswrapper (printer) drivers</longdescription>
+  <use>
+    <flag name="metric">Use A4 as default paper type, instead of Letter.</flag>
+    <flag name="debug">Enables DEBUG var in brothers lpdwrapper script to get /tmp/br_cupsfilter_debug_log file</flag>
+  </use>
+</pkgmetadata>
