@@ -17,7 +17,7 @@ SRC_URI="http://download.brother.com/welcome/dlf102036/${MODEL}lpr-${PV}-${BR_PR
 		http://download.brother.com/welcome/dlf102044/${MODEL}_cupswrapper_GPL_source_${PV}-${BR_PR}.tar.gz"
 		# for no source only use:
 		# http://download.brother.com/welcome/dlf102037/${MODEL}cupswrapper-${PV}-${BR_PR}.i386.rpm
-LICENSE="GPL-2+ Brother no-source-code"
+LICENSE="GPL-2+ brother-eula no-source-code"
 SLOT="0"
 KEYWORDS="x86 amd64"
 IUSE="+metric -debug"
