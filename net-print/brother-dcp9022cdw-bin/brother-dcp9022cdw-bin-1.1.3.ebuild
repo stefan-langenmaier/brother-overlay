@@ -13,7 +13,7 @@ HOMEPAGE="http://support.brother.com"
 SRC_URI="http://download.brother.com/welcome/dlf101614/dcp9022cdwlpr-1.1.3-0.i386.rpm
 http://download.brother.com/welcome/dlf101615/dcp9022cdwcupswrapper-1.1.4-0.i386.rpm"
 
-LICENSE="BROTHER-EULA GPL-2"
+LICENSE="brother-eula GPL-2"
 
 SLOT="0"
 
