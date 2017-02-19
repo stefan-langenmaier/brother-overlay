@@ -52,7 +52,7 @@ src_install() {
 	cp -r opt "${D}" || die
 
 	mkdir -p "${D}/usr/libexec/cups/filter" || die
-	( cd "${D}/usr/libexec/cups/filter/" && ln -s ../../../../opt/brother/Printers/HL1110/lpd/filter_HL1110 brother_lpdwrapper_hl1110 ) || die
+	( cd "${D}/usr/libexec/cups/filter/" && ln -s ../../../../opt/brother/Printers/HL1110/lpd/filter_HL1110 brother_lpdwrapper_HL1110 ) || die
 
 	mkdir -p "${D}/usr/share/cups/model" || die
 	( cd "${D}/usr/share/cups/model" && ln -s ../../../../opt/brother/Printers/HL1110/cupswrapper/brother-HL1110-cups-en.ppd ) || die
