@@ -1,3 +1,6 @@
+This is a fork to make it work with the brother dcp9055cdn.
+Original repo is here: https://github.com/stefan-langenmaier/brother-overlay/
+
 # How to use this overlay
 
 ## with local overlays
@@ -9,7 +12,7 @@ To enable this overlay make sure you are using a recent Portage version (at leas
 [brother-overlay]
 location = /usr/local/portage/brother-overlay
 sync-type = git
-sync-uri = https://github.com/stefan-langenmaier/brother-overlay.git
+sync-uri = https://github.com/madImpulse/brother-overlay.git
 priority=9999
 ```
 
