@@ -40,11 +40,11 @@ src_unpack() {
 }
 
 src_install() {
-    MODEL="dcp9055cdn"
-    mkdir -p "${D}"usr/libexec/cups/filter || die
-    mkdir -p "${D}"usr/share/cups/model/Brother || die
-    cp -r usr "${D}" || die
-    ( ln -s "${D}"usr/local/Brother/Printer/${MODEL}/lpd/filterdcp9055cdn "${D}"usr/libexec/cups/filter/brlpdwrapperdcp9055cdn ) || die
+	MODEL="dcp9055cdn"
+	mkdir -p "${D}"usr/libexec/cups/filter || die
+	mkdir -p "${D}"usr/share/cups/model/Brother || die
+	cp -r usr "${D}" || die
+	( ln -s "${D}"usr/local/Brother/Printer/${MODEL}/lpd/filterdcp9055cdn "${D}"usr/libexec/cups/filter/brlpdwrapperdcp9055cdn ) || die
 
-    ( ln -s "${D}"usr/local/Brother/Printer/${MODEL}/cupswrapper/${MODEL}.ppd "${D}"usr/share/cups/model/Brother/brother_${MODEL}_printer_en.ppd ) || die
+	( ln -s "${D}"usr/local/Brother/Printer/${MODEL}/cupswrapper/${MODEL}.ppd "${D}"usr/share/cups/model/Brother/brother_${MODEL}_printer_en.ppd ) || die
 }
