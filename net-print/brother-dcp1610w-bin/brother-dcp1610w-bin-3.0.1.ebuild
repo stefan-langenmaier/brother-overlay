@@ -46,7 +46,7 @@ src_install() {
 	cp -r opt "${D}" || die
 	cp -r var "${D}" || die
 
-	( ln -s "${D}"opt/brother/Printers/${MODEL^^}/cupswrapper/brother_lpdwrapper_${MODEL^^} "${D}"usr/libexec/cups/filter/brlpdwrapper${MODEL} ) || die
+	( ln -s "${D}"opt/brother/Printers/${MODEL^^}/cupswrapper/brother_lpdwrapper_${MODEL^^} "${D}"usr/libexec/cups/filter/brother_lpdwrapper_${MODEL^^} ) || die
 
 	( ln -s "${D}"opt/brother/Printers/${MODEL^^}/cupswrapper/brother-${MODEL^^}-cups-en.ppd "${D}"usr/share/cups/model/Brother/brother_${MODEL}_printer_en.ppd ) || die
 }
