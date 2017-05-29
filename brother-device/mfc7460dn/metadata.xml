@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!--
+# $Id$
+-->
+<pkgmetadata>
+<longdescription>Brother support for MFC-7460DN</longdescription>
+<use>
+	<flag name="scanner">Pulls in the scanner support</flag>
+	<flag name="printer">Pulls in the printer support</flag>
+</use>
+</pkgmetadata>
