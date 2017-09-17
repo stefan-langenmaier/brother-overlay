@@ -9,7 +9,7 @@ inherit eutils versionator rpm linux-info
 MY_VERSION=$(replace_version_separator 3 '-')
 MY_PRINTER=${PN#*-}
 MY_PRINTER=${MY_PRINTER%-*}
-PRINTER_NAME=$(echo ${MY_PRINTER} | tr [a-z] [A-Z])
+PRINTER_NAME=${MY_PRINTER^^}
 
 DESCRIPTION="Brother printer driver for ${PRINTER_NAME}"
 

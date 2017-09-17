@@ -46,7 +46,7 @@ src_prepare() {
 
 	# exchange the vars in the script with the values of our ones and
 	# remove masking backslashes and some other stuff
-	local PRINTER_NAME=$(echo "${MODEL}" | tr '[a-z]' '[A-Z]')
+	local PRINTER_NAME="${MODEL^^}"
 	sed -i -e "s|\${printer_model}|${MODEL}|g;s|\${device_model}|Printers|g;s|\${printer_name}|${PRINTER_NAME}|g;s|exit \$errorcode|exit|" \
 		-e 's|\\\([\$\`]\)|\1|g' brother_lpdwrapper_${MODEL} || die
 
