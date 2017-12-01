@@ -12,6 +12,45 @@
 # Debugging switch
 DEBUGGING="true"
 
+# Configuration for brscan2
+BRSCAN2_COMMAND="brsaneconfig2 -q"
+BRSCAN2_OUTDIR="brscan2"
+BRSCAN2_NAME="brother-%id%-bin"
+BRSCAN2_VERSION="1.0"
+BRSCAN2_CATEGORY="media-gfx"
+read -d '' BRSCAN2_EBUILD << EOD
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# \$Id\$
+
+EAPI="6"
+
+DESCRIPTION="Scanner driver for Brother %model% (brscan2)"
+HOMEPAGE="http://support.brother.com"
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="amd64 x86"
+
+RDEPEND="media-gfx/brother-scan2-bin"
+
+pkg_postinst() {
+	einfo "Configure scanner using one of the following commands:"
+	einfo "- using hostname:   /usr/local/Brother/sane/brsaneconfig2 -a name=%model% model=%model% nodename=<hostname>"
+	einfo "- using IP address: /usr/local/Brother/sane/brsaneconfig2 -a name=%model% model=%model% ip=<IP address>"
+}
+EOD
+
+read -d '' BRSCAN2_METADATA << EOD
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!--
+# \$Id\$
+-->
+<pkgmetadata>
+<longdescription>Scanner driver for Brother %model% (brscan2)</longdescription>
+</pkgmetadata>
+EOD
+
 # Configuration for brscan3
 BRSCAN3_COMMAND="brsaneconfig3 -q"
 BRSCAN3_OUTDIR="brscan3"
@@ -186,6 +225,12 @@ function generate_ebuild_manifest() {
 #  Main
 # -----------------------------------
 
+# Generate brscan2 packages
+for model in $(get_brscan_models $BRSCAN2_COMMAND); do
+	generate_meta_package "$model" "$BRSCAN2_OUTDIR" "$BRSCAN2_NAME" "$BRSCAN2_VERSION" "$BRSCAN2_CATEGORY" "$BRSCAN2_EBUILD" "$BRSCAN2_METADATA"
+	[ "$DEBUGGING" == "true" ] && break
+done
+
 # Generate brscan3 packages
 for model in $(get_brscan_models $BRSCAN3_COMMAND); do
 	generate_meta_package "$model" "$BRSCAN3_OUTDIR" "$BRSCAN3_NAME" "$BRSCAN3_VERSION" "$BRSCAN3_CATEGORY" "$BRSCAN3_EBUILD" "$BRSCAN3_METADATA"
@@ -211,4 +256,4 @@ for ebuild in $(find -type f -name '*.ebuild' 2>/dev/null); do
 done
 
 # Count generated packages
-echo -e "\n-> packages brscan3: $(find "$BRSCAN3_OUTDIR" -type f -name '*.ebuild' 2>/dev/null | wc -l 2>/dev/null), brscan4: $(find "$BRSCAN4_OUTDIR" -type f -name '*.ebuild' 2>/dev/null | wc -l 2>/dev/null), brgenml1: $(find "$BRGENML1_OUTDIR" -type f -name '*.ebuild' 2>/dev/null | wc -l 2>/dev/null), total: $(find -type f -name '*.ebuild' 2>/dev/null | wc -l 2>/dev/null)\n"
+echo -e "\n-> packages brscan2: $(find "$BRSCAN2_OUTDIR" -type f -name '*.ebuild' 2>/dev/null | wc -l 2>/dev/null), brscan3: $(find "$BRSCAN3_OUTDIR" -type f -name '*.ebuild' 2>/dev/null | wc -l 2>/dev/null), brscan4: $(find "$BRSCAN4_OUTDIR" -type f -name '*.ebuild' 2>/dev/null | wc -l 2>/dev/null), brgenml1: $(find "$BRGENML1_OUTDIR" -type f -name '*.ebuild' 2>/dev/null | wc -l 2>/dev/null), total: $(find -type f -name '*.ebuild' 2>/dev/null | wc -l 2>/dev/null)\n"
