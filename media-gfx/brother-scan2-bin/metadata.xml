@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <longdescription>Brother scanner tool version 2</longdescription>
+  <use>
+	<flag name="usb">Enable this, if you want to scan over usb connection.</flag>
+  </use>
+</pkgmetadata>
