@@ -12,8 +12,7 @@ HOMEPAGE="http://support.brother.com"
 MY_PR=${PR/r/}
 
 SRC_URI="http://download.brother.com/welcome/dlf006265/brmfc7820nlpr-${PV}-${MY_PR}.i386.rpm
-        http://download.brother.com/welcome/dlf006267/cupswrapperMFC7820N-${PV}-${MY_PR}.i386.rpm"
-
+	http://download.brother.com/welcome/dlf006267/cupswrapperMFC7820N-${PV}-${MY_PR}.i386.rpm"
 
 LICENSE="brother-eula GPL-2"
 
