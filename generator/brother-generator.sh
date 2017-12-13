@@ -10,7 +10,7 @@
 # -----------------------------------
 
 # Debugging switch
-DEBUGGING="true"
+#DEBUGGING="true"
 
 # Configuration for brscan2
 BRSCAN2_COMMAND="brsaneconfig2 -q"
@@ -19,9 +19,8 @@ BRSCAN2_NAME="brother-%id%-bin"
 BRSCAN2_VERSION="1.0"
 BRSCAN2_CATEGORY="media-gfx"
 read -d '' BRSCAN2_EBUILD << EOD
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# \$Id\$
 
 EAPI="6"
 
@@ -43,9 +42,6 @@ EOD
 read -d '' BRSCAN2_METADATA << EOD
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<!--
-# \$Id\$
--->
 <pkgmetadata>
 <longdescription>Scanner driver for Brother %model% (brscan2)</longdescription>
 </pkgmetadata>

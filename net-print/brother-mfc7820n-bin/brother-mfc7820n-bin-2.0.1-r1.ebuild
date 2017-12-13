@@ -1,8 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils rpm linux-info
 
@@ -43,10 +42,10 @@ src_unpack() {
 }
 
 src_prepare() {
-	# adapted from the archlinux package
-	# https://aur.archlinux.org/packages/brother-brgenml1/
-	#epatch "${FILESDIR}/brother_lpdwrapper_BrGenML1.patch"
-	return
+	perl -i -pe 'BEGIN{$stop=0} $stop = !$stop if /ENDOFWFILTER/; if(!$stop) {s/\$1/\$2/g;s!/usr!\$1/usr!;s!/etc!\$1/etc!}' \
+	"usr/local/Brother/cupswrapper/cupswrapperMFC7820N-${PV}"
+
+	eapply_user
 }
 
 src_install() {
@@ -56,19 +55,14 @@ src_install() {
 	chmod 755 "${D}/usr/local/Brother/inf" || die
 	chmod 755 "${D}/usr/local/Brother" || die
 
+	"${D}/usr/local/Brother/cupswrapper/cupswrapperMFC7820N-${PV}" "${D}" || die
 	chmod 755 "${D}/usr/local/Brother/cupswrapper" || die
 
 	mkdir -p "${D}/var/spool/lpd/MFC7820N" || die
+	mkdir -p "${D}/usr/libexec/cups/filter" || die
+	( ln -s "${D}/usr/lib/cups/filter/brlpdwrapperMFC7820N" "${D}usr/libexec/cups/filter/brlpdwrapperMFC7820N" ) || die
 }
 
 pkg_postinst() {
-	"/usr/local/Brother/cupswrapper/cupswrapperMFC7820N-${PV}" || die
-	( ln -s "/usr/lib64/cups/filter/brlpdwrapperMFC7820N" "/usr/libexec/cups/filter/brlpdwrapperMFC7820N" ) || die
-
 	einfo "Brother MFC-7820N printer installed"
-}
-
-pkg_prerm() {
-	rm "/usr/libexec/cups/filter/brlpdwrapperMFC7820N" || die
-	"/usr/local/Brother/cupswrapper/cupswrapperMFC7820N-${PV}" -e || die
 }
