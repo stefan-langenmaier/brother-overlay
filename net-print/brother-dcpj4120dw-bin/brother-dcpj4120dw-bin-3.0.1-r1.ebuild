@@ -1,6 +1,5 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Original made for Brother MFC-J880DW printer by Chris Morgenstern[machredsch]
 # Updated for Brother DCP-J4120DW by Harald Judt
