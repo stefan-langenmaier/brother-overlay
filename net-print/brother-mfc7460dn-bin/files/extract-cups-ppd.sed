@@ -1,0 +1,3 @@
+#!/bin/sed -f
+/^cat <<ENDOFPPDFILE/,/^ENDOFPPDFILE/!d
+/ENDOFPPDFILE/d
