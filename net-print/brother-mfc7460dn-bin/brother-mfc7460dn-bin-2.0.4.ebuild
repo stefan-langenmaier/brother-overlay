@@ -47,6 +47,8 @@ src_install() {
 	keepdir /var/spool/lpd/MFC7460DN
 	dodir /opt/brother/Printers
 	cp -a "${S}" "${ED%/}/opt/brother/Printers" || die
+	fowners lp:lp /opt/brother/Printers/MFC7460DN/inf/brMFC7460DNrc
+	fperms 600 /opt/brother/Printers/MFC7460DN/inf/brMFC7460DNrc
 	insinto /opt/brother/Printers/MFC7460DN/cupswrapper
 	doins "${T}/brother-MFC7460DN.ppd"
 	exeinto /opt/brother/Printers/MFC7460DN/cupswrapper
