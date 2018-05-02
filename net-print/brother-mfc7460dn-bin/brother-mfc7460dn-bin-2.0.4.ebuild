@@ -38,15 +38,22 @@ src_unpack() {
 
 src_prepare() {
 	default
-	sed -i -f "${FILESDIR}/fix-path.sed" "${S}/lpd/filterMFC7460DN" || die
-	sed -f "${FILESDIR}/extract-cups-ppd.sed" "${S}/cupswrapper/cupswrapperMFC7460DN-2.0.4" > "${T}/brother-MFC7460DN.ppd" || die
-	sed -f "${FILESDIR}/extract-cups-filter.sed" -f "${FILESDIR}/fix-path.sed" "${S}/cupswrapper/cupswrapperMFC7460DN-2.0.4" > "${T}/brlpdwrapperMFC7460DN" || die
+	sed -i -f "${FILESDIR}/fix-paths.sed" "${S}/cupswrapper/cupswrapperMFC7460DN-${PV}" || die
+	sed -i -f "${FILESDIR}/fix-paths.sed" "${S}/inf/setupPrintcap2" || die
+	sed -i -f "${FILESDIR}/fix-paths.sed" "${S}/lpd/filterMFC7460DN" || die
+	sed -z -i -f "${FILESDIR}/fix-paths-in-binary.sed" "${S}/cupswrapper/brcupsconfig4" || die
+	sed -z -i -f "${FILESDIR}/fix-paths-in-binary.sed" "${S}/inf/braddprinter" || die
+	sed -z -i -f "${FILESDIR}/fix-paths-in-binary.sed" "${S}/inf/brprintconflsr3" || die
+	sed -f "${FILESDIR}/extract-cups-ppd.sed" "${S}/cupswrapper/cupswrapperMFC7460DN-${PV}" > "${T}/brother-MFC7460DN.ppd" || die
+	sed -f "${FILESDIR}/extract-cups-filter.sed" "${S}/cupswrapper/cupswrapperMFC7460DN-${PV}" > "${T}/brlpdwrapperMFC7460DN" || die
 }
 
 src_install() {
 	keepdir /var/spool/lpd/MFC7460DN
 	dodir /opt/brother/Printers
 	cp -a "${S}" "${ED%/}/opt/brother/Printers" || die
+	fowners lp:lp /opt/brother/Printers/MFC7460DN/inf/brMFC7460DNrc
+	fperms 600 /opt/brother/Printers/MFC7460DN/inf/brMFC7460DNrc
 	insinto /opt/brother/Printers/MFC7460DN/cupswrapper
 	doins "${T}/brother-MFC7460DN.ppd"
 	exeinto /opt/brother/Printers/MFC7460DN/cupswrapper
