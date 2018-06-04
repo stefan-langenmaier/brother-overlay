@@ -28,14 +28,6 @@ QA_PRESTRIPPED="
 	/usr/bin/brprintconf_${model}
 "
 
-src_prepare() {
-	default
-	# Apparently this fixes a problem where letters print off-center
-	# https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=brother-mfc-j985dw
-	sed -i -e 's:^\(PaperType\)=.\+$:\1=Letter:g' \
-		opt/brother/Printers/${model}/inf/br${model}func || die
-}
-
 src_compile() {
 	emake -C "${wrapper_source}/brcupsconfig"
 }
