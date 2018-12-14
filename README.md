@@ -21,7 +21,7 @@ Invoke the following:
 
 	layman -f -a brother-overlay
 	
-Or read the instructions on the [Gentoo Wiki](http://wiki.gentoo.org/wiki/Layman#Adding_custom_overlays).
+Or read the instructions on the [Gentoo Wiki](http://wiki.gentoo.org/wiki/Layman#Adding_custom_repositories).
 
 # Installation
 
