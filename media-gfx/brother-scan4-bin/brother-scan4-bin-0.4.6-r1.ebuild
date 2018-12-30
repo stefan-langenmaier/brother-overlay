@@ -29,6 +29,8 @@ RDEPEND="
 "
 DEPEND=""
 
+PATCHES=( "${FILESDIR}/${P}-fix-udev-rules.patch" )
+
 S="${WORKDIR}"
 
 src_install() {
