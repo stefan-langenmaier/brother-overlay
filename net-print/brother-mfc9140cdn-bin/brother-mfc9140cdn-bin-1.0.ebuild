@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit rpm
+inherit eutils rpm linux-info
 
 DESCRIPTION="Brother printer driver for MFC-9140CDN"
 
@@ -34,15 +34,16 @@ src_unpack() {
 
 src_install() {
 	has_multilib_profile && ABI=x86
+	MODEL="mfc9140cdn"
 
-	dosbin "${WORKDIR}/usr/bin/brprintconf_mfc9140cdn"
+	dosbin "${WORKDIR}/usr/bin/brprintconf_${MODEL}"
 
 	cp -r usr "${D}" || die
 	cp -r opt "${D}" || die
 
 	mkdir -p "${D}/usr/libexec/cups/filter" || die
-	( cd "${D}/usr/libexec/cups/filter/" && ln -s ../../../../opt/brother/Printers/mfc9140cdn/lpd/filtermfc9140cdn brother_lpdwrapper_mfc9140cdn ) || die
+	( cd "${D}/usr/libexec/cups/filter/" && ln -s ../../../../opt/brother/Printers/${MODEL}/lpd/filter${MODEL} brother_lpdwrapper_${MODEL} ) || die
 
 	mkdir -p "${D}/usr/share/cups/model" || die
-	( cd "${D}/usr/share/cups/model" && ln -s ../../../../opt/brother/Printers/mfc9140cdn/cupswrapper/brother_mfc9140cdn_printer_en.ppd ) || die
+	( cd "${D}/usr/share/cups/model" && ln -s ../../../../opt/brother/Printers/${MODEL}/cupswrapper/brother_${MODEL}_printer_en.ppd ) || die
 }
