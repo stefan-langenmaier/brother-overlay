@@ -1,0 +1,12 @@
+diff --git a/opt/brother/scanner/udev-rules/type1/NN-brother-mfp-type1.rules b/opt/brother/scanner/udev-rules/type1/NN-brother-mfp-type1.rules
+index b0695be..4239d47 100644
+--- a/opt/brother/scanner/udev-rules/type1/NN-brother-mfp-type1.rules
++++ b/opt/brother/scanner/udev-rules/type1/NN-brother-mfp-type1.rules
+@@ -14,7 +14,6 @@ SUBSYSTEM!="usb_device", GOTO="brother_mfp_end"
+ LABEL="brother_mfp_udev_1"
+ 
+ 
+-SYSFS{idVendor}=="04f9", GOTO="brother_mfp_udev_2"
+ ATTRS{idVendor}=="04f9", GOTO="brother_mfp_udev_2"
+ GOTO="brother_mfp_end"
+ LABEL="brother_mfp_udev_2"
