@@ -40,7 +40,7 @@ src_install() {
 	cp -r opt "${D}" || die
 
 	mkdir -p "${D}/usr/libexec/cups/filter" || die
-	( cd "${D}/usr/libexec/cups/filter/" && ln -s ../../../../opt/brother/Printers/hll3270cdw/lpd/filterhll3270cdw brother_lpdwrapper_hll3270cdw ) || die
+	( cd "${D}/usr/libexec/cups/filter/" && ln -s ../../../../opt/brother/Printers/hll3270cdw/lpd/filter_hll3270cdw brother_lpdwrapper_hll3270cdw ) || die
 
 	mkdir -p "${D}/usr/share/cups/model" || die
 	( cd "${D}/usr/share/cups/model" && ln -s ../../../../opt/brother/Printers/hll3270cdw/cupswrapper/brother_hll3270cdw_printer_en.ppd ) || die
