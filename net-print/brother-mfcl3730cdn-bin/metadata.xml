@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gregsurbey@hotmail.com</email>
+		<name>Greg Surbey</name>
+	</maintainer>
+	<longdescription>Brother printer driver for mfcl3730cdn</longdescription>
+</pkgmetadata>
