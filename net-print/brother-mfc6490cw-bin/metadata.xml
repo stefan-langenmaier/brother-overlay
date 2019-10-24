@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>printing</herd>
 	<maintainer type="person">
 		<email>dev@erichseifert.de</email>
 		<name>Erich Seifert</name>
