@@ -13,7 +13,7 @@ BR_PR=${PR/r/}
 
 DESCRIPTION="Brother printer driver for DCP-J4120DW"
 HOMEPAGE="http://support.brother.com"
-SRC_URI="http://www.brother.com/pub/bsc/linux/dlf/${MODEL}lpr-${PV}-${BR_PR}.i386.rpm
+SRC_URI="https://download.brother.com/welcome/dlf101557/${MODEL}lpr-${PV}-${BR_PR}.i386.rpm
 	http://download.brother.com/welcome/dlf101559/brother_${MODEL}_GPL_source_${PV}-${BR_PR}.tar.gz"
 
 LICENSE="GPL-2+ brother-eula no-source-code"

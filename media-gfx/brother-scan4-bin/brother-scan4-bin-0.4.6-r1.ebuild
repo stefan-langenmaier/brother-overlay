@@ -12,8 +12,8 @@ MY_PN=brscan4
 
 DESCRIPTION="Brother scanner tool version 4"
 HOMEPAGE="http://support.brother.com/g/s/id/linux/en/index.html"
-SRC_URI="amd64? ( http://download.brother.com/welcome/dlf006648/${MY_PN}-${PV}-${BUILD}.x86_64.rpm )
-	x86? (	http://download.brother.com/welcome/dlf006647/${MY_PN}-${PV}-${BUILD}.i386.rpm )
+SRC_URI="amd64? ( http://www.brother.com/pub/bsc/linux/packages/${MY_PN}-${PV}-${BUILD}.x86_64.rpm )
+	x86? (	http://www.brother.com/pub/bsc/linux/packages/${MY_PN}-${PV}-${BUILD}.i386.rpm )
 	http://download.brother.com/welcome/dlf006653/brother-udev-rule-type1-1.0.2-0.noarch.rpm"
 LICENSE="GPL-2 brother-eula no-source-code"
 SLOT="0"
