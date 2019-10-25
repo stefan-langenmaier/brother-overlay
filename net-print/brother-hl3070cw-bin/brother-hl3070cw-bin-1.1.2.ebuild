@@ -28,15 +28,15 @@ RDEPEND="${DEPEND}"
 S=${WORKDIR}
 
 pkg_setup() {
-    CONFIG_CHECK=""
-    if use amd64; then
+	CONFIG_CHECK=""
+	if use amd64; then
 	CONFIG_CHECK="${CONFIG_CHECK} ~IA32_EMULATION"
-	if ! has_multilib_profile; then
-	    die "This package CANNOT be installed on pure 64-bit system. You need multilib enabled."
+		if ! has_multilib_profile; then
+			die "This package CANNOT be installed on pure 64-bit system. You need multilib enabled."
+		fi
 	fi
-    fi
 
-    linux-info_pkg_setup
+	linux-info_pkg_setup
 }
 
 src_unpack() {
@@ -59,9 +59,9 @@ src_install() {
 }
 
 pkg_postinst() {
-    chmod 755 /opt/brother/Printers/hl3070cw/lpd
-    chmod 755 /opt/brother/Printers/hl3070cw/inf
-    chmod 755 /opt/brother/Printers/hl3070cw
-    chmod 755 /opt/brother/Printers
-    chmod 755 /opt/brother
+	chmod 755 /opt/brother/Printers/hl3070cw/lpd
+	chmod 755 /opt/brother/Printers/hl3070cw/inf
+	chmod 755 /opt/brother/Printers/hl3070cw
+	chmod 755 /opt/brother/Printers
+	chmod 755 /opt/brother
 }
