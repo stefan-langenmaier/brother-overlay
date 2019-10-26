@@ -6,5 +6,6 @@
 <pkgmetadata>
 <longdescription>Printer driver for Brother MFC-9320CW</longdescription>
 <use>
+  <flag name="avahi">Uses <pkg>net-dns/avahi</pkg> and <pkg>sys-auth/nss-mdns</pkg> to find printers with dynamically assigned IP addresses by name</flag>
 </use>
 </pkgmetadata>
