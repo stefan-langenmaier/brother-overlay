@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit rpm
+inherit rpm multilib
 
 DESCRIPTION="Brother printer driver for MFC-9340CDW"
 

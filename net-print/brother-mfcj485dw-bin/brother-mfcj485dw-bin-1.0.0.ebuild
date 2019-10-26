@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 API="7"
-inherit rpm
+inherit rpm multilib
 
 PRINTER_MODEL=${PN#*-}
 PRINTER_MODEL=${PRINTER_MODEL%-*}
