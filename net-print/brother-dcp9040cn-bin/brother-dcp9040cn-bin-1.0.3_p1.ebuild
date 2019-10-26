@@ -1,13 +1,14 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils versionator rpm linux-info
+inherit eutils rpm linux-info
 
-MY_VERSION=$(replace_version_separator 3 '-')
-MY_PRINTER=${PN#*-}
-MY_PRINTER=${MY_PRINTER%-*}
+MY_PRINTER="${PN/brother-/}"
+MY_PRINTER="${MY_PRINTER/-bin/}"
+MY_VERSION="${PV/-${PR}/}"
+MY_VERSION="${MY_VERSION/_p/-}"
 PRINTER_NAME=${MY_PRINTER^^}
 
 DESCRIPTION="Brother printer driver for ${PRINTER_NAME}"
@@ -44,6 +45,7 @@ src_unpack() {
 }
 
 src_prepare() {
+	default
 	perl -i -pe 'BEGIN{$stop=0} $stop = !$stop if /ENDOFWFILTER/; if(!$stop) {s/\$1/\$2/g;s!/usr!\$1/usr!;s!/etc!\$1/etc!}' \
 	  "usr/local/Brother/Printer/${MY_PRINTER}/cupswrapper/cupswrapperSetup_${MY_PRINTER}"
 }

@@ -1,14 +1,16 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 #based on ebuilds from the funtoo and flow overlay
 
-inherit rpm versionator
+inherit rpm
 
-MY_PV="$(replace_version_separator 3 -)"
-MY_PN=brscan3
+MY_PN="${PN/brother-/br}"
+MY_PN="${MY_PN/-bin/}"
+MY_PV="${PV/-${PR}/}"
+MY_PV="${MY_PV/_p/-}"
 
 DESCRIPTION="Brother scanner driver (brscan3)"
 
