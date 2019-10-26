@@ -3,7 +3,7 @@
 
 # based on ebuilds from funtoo and flow overlay
 
-EAPI="7"
+EAPI=7
 
 inherit rpm udev
 
