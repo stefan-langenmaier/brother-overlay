@@ -1,7 +1,7 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 DESCRIPTION="Printer driver for Brother DCP-L2520DW (brgenml1)"
 HOMEPAGE="http://support.brother.com"
