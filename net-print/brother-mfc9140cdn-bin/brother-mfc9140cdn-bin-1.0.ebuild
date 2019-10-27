@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils rpm linux-info
+inherit eutils rpm linux-info multilib
 
 DESCRIPTION="Brother printer driver for MFC-9140CDN"
 
