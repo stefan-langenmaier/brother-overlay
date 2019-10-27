@@ -1,7 +1,7 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 DESCRIPTION="Scanner driver for Brother MFC-695CDN (brscan3)"
 HOMEPAGE="http://support.brother.com"

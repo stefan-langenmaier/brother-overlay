@@ -3,7 +3,7 @@
 
 # based on ebuilds from funtoo and flow overlay
 
-EAPI="6"
+EAPI=6
 
 inherit rpm
 
