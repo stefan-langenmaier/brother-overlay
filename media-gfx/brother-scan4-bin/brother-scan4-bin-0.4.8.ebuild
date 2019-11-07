@@ -49,6 +49,8 @@ src_install() {
 
 	exeinto ${brscan4dir}
 	doexe brsaneconfig4
+	doexe brscan_gnetconfig
+	doexe brscan_cnetconfig
 
 	# Install necessary symlinks (as found in rpm and used by brsaneconfig4)
 	dosym ../../${brscan4dir}/brsaneconfig4 /usr/bin/brsaneconfig4
