@@ -33,6 +33,18 @@ src_unpack() {
 	rpm_unpack ${A}
 }
 
+src_prepare() {
+	eapply_user
+
+	local BASE_PATH="opt/brother/Printers/${PRINTER_MODEL}"
+	local TAG="\!ENDOFWFILTER\!"
+	sed -ne "/${TAG}/,/${TAG}/!d" -e "/${TAG}/d; p" < ${BASE_PATH}/cupswrapper/cupswrapper${PRINTER_MODEL} > ${BASE_PATH}/brother_lpdwrapper_${PRINTER_MODEL} || die
+
+	local PRINTER_NAME="${PRINTER_MODEL^^}"
+	sed -i -e "s|\${printer_model}|${PRINTER_MODEL}|g;s|\${device_model}|Printers|g;s|\${printer_name}|${PRINTER_NAME}|g;s|exit \$errorcode|exit|" \
+		-e 's|\\\([\$\`]\)|\1|g' ${BASE_PATH}/brother_lpdwrapper_${PRINTER_MODEL} || die
+}
+
 src_install() {
 	has_multilib_profile && ABI=x86
 
@@ -48,6 +60,9 @@ src_install() {
 	# Install wrapping tools for CUPS
 	exeinto opt/brother/Printers/${PRINTER_MODEL}/cupswrapper
 	doexe "${S}"/opt/brother/Printers/${PRINTER_MODEL}/cupswrapper/cupswrapper${PRINTER_MODEL}
+
+	exeinto usr/libexec/cups/filter
+	doexe "${S}"/opt/brother/Printers/${PRINTER_MODEL}/brother_lpdwrapper_${PRINTER_MODEL}
 
 	exeinto opt/brother/Printers/${PRINTER_MODEL}/cupswrapper
 	doexe "${S}"/opt/brother/Printers/${PRINTER_MODEL}/cupswrapper/brcupsconfpt1
