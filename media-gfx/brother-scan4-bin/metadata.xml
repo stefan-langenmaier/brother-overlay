@@ -8,5 +8,6 @@
 	<longdescription>Brother scanner tool version 4</longdescription>
 	<use>
 		<flag name="usb">Enable this, if you want to scan over usb connection.</flag>
+		<flag name="avahi">Enable this, if you want to find the scanner via avahi.</flag>
 	</use>
 </pkgmetadata>
