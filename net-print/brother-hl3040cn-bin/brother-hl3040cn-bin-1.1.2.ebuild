@@ -10,7 +10,7 @@ DESCRIPTION="Brother printer driver for HL-3040CN"
 HOMEPAGE="http://support.brother.com"
 
 SRC_URI="https://download.brother.com/welcome/dlf005904/hl3040cnlpr-1.1.2-1.i386.rpm
-         https://download.brother.com/welcome/dlf005906/hl3040cncupswrapper-1.1.2-2.i386.rpm"
+	https://download.brother.com/welcome/dlf005906/hl3040cncupswrapper-1.1.2-2.i386.rpm"
 
 LICENSE="brother-eula"
 
@@ -44,4 +44,3 @@ src_install() {
 	mkdir -p "${D}/usr/share/ppd/cupsfilters" || die
 	( cd "${D}/usr/share/ppd/cupsfilters" && ln -s /opt/brother/Printers/hl3040cn/cupswrapper/brother_hl3040cn_printer_en.ppd ) || die
 }
-
