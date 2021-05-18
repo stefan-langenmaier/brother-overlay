@@ -39,9 +39,12 @@ src_prepare() {
 
 	mv "${WORKDIR}/brother_${MODEL}_GPL_source_${PV}-${BR_PR}/" "${S}/cupswrapper-src/" || die
 
+	cd "cupswrapper-src" || die
+	# We use our self-compiled brcupsconfpt1, which is called brcupsconfig.
+	sed -i -e "s/brcupsconfpt1/brcupsconfig/g" cupswrapper/cupswrapper${MODEL} || die
+
 	# Extract the needed bundled lpdwrapper script from within brothers generate script.
 	# Our needed script is located between tags.
-	cd "cupswrapper-src" || die
 	local TAG="\!ENDOFWFILTER\!"
 	sed -ne "/${TAG}/,/${TAG}/!d" -e "/${TAG}/d; p" < cupswrapper/cupswrapper${MODEL} > brother_lpdwrapper_${MODEL} || die
 
