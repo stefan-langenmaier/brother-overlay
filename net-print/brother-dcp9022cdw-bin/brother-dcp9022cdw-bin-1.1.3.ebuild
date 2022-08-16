@@ -1,7 +1,7 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit eutils rpm linux-info
 
@@ -36,10 +36,6 @@ pkg_setup() {
 
 src_unpack() {
 	rpm_unpack ${A}
-}
-
-src_prepare() {
-	return
 }
 
 src_install() {
