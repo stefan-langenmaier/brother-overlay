@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # updated from my Brother MFC-J880DW ebuild by Chris Morgenstern
 
-EAPI=7
+EAPI=8
 
 inherit rpm multilib
 
