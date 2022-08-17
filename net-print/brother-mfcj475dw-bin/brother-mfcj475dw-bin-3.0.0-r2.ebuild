@@ -11,7 +11,7 @@ MODEL="mfcj475dw"
 LPR_DLF=006846
 CW_SRC_DLF=006867
 CW_DLF=006848
-BR_PR=${PR/r/}
+BR_PR=1
 
 DESCRIPTION="Brother MFC-J475DW lpr+cupswrapper (printer) drivers"
 HOMEPAGE="http://support.brother.com/g/b/downloadtop.aspx?c=us&lang=en&prod=${MODEL}_us_as"

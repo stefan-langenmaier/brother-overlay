@@ -5,7 +5,7 @@ EAPI=8
 
 inherit rpm linux-info
 
-MY_PR=${PR/r/}
+MY_PR=1
 MY_PN=dcp1510
 
 DESCRIPTION="Brother printer driver for DCP-1510"

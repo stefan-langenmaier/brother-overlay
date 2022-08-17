@@ -8,7 +8,7 @@ EAPI=8
 inherit rpm multilib
 
 MODEL="mfcj880dw"
-BR_PR=${PR/r/}
+BR_PR=0
 
 DESCRIPTION="Brother MFC-J880DW lpr+cupswrapper (printer) drivers"
 HOMEPAGE="http://support.brother.com/g/b/downloadtop.aspx?c=us&lang=en&prod=${MODEL}_us_eu_as"
