@@ -7,7 +7,7 @@ EAPI=8
 
 inherit rpm
 
-MY_PR=${PR/r/}
+MY_PR=1
 MY_PN=brscan2
 
 DESCRIPTION="Brother scanner tool version 2"
