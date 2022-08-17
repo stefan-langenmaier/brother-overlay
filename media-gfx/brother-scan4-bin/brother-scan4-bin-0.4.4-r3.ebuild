@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # based on ebuilds from funtoo and flow overlay
 
-EAPI=6
+EAPI=8
 
 inherit rpm
 
