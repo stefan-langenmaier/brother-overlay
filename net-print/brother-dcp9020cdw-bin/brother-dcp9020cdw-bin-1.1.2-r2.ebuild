@@ -1,9 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+EAPI=8
 
-EAPI=5
-
-inherit eutils rpm linux-info
+inherit rpm linux-info
 
 DESCRIPTION="Brother printer driver for DCP-9020CDW & DCP-9022CDW"
 
@@ -36,10 +35,6 @@ pkg_setup() {
 
 src_unpack() {
 	rpm_unpack ${A}
-}
-
-src_prepare() {
-	return
 }
 
 src_install() {
