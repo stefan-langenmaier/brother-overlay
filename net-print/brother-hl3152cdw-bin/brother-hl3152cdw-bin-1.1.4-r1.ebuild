@@ -10,7 +10,7 @@ DESCRIPTION="Brother printer driver for HL3152CDW"
 HOMEPAGE="http://support.brother.com"
 
 SRC_URI="https://download.brother.com/welcome/dlf101634/hl3152cdwlpr-1.1.3-0.i386.rpm
-         https://download.brother.com/welcome/dlf101635/hl3152cdwcupswrapper-1.1.4-0.i386.rpm"
+https://download.brother.com/welcome/dlf101635/hl3152cdwcupswrapper-1.1.4-0.i386.rpm"
 
 LICENSE="brother-eula GPL-2"
 
