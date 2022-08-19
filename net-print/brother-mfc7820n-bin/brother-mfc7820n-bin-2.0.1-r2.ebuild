@@ -9,10 +9,11 @@ DESCRIPTION="Brother printer driver for MFC-7820N"
 
 HOMEPAGE="http://support.brother.com"
 
-MY_PR=1
+BR_PR=${PR/r/}
+let BR_PR=( ${BR_PR}-1 )
 
-SRC_URI="http://download.brother.com/welcome/dlf006265/brmfc7820nlpr-${PV}-${MY_PR}.i386.rpm
-	http://download.brother.com/welcome/dlf006267/cupswrapperMFC7820N-${PV}-${MY_PR}.i386.rpm"
+SRC_URI="http://download.brother.com/welcome/dlf006265/brmfc7820nlpr-${PV}-${BR_PR}.i386.rpm
+	http://download.brother.com/welcome/dlf006267/cupswrapperMFC7820N-${PV}-${BR_PR}.i386.rpm"
 
 LICENSE="brother-eula GPL-2"
 

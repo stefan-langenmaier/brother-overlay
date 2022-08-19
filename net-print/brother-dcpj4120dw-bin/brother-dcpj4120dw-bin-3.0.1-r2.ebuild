@@ -9,7 +9,8 @@ EAPI=8
 inherit rpm multilib linux-info
 
 MODEL="dcpj4120dw"
-BR_PR=1
+BR_PR=${PR/r/}
+let BR_PR=( ${BR_PR}-1 )
 
 DESCRIPTION="Brother printer driver for DCP-J4120DW"
 HOMEPAGE="http://support.brother.com"

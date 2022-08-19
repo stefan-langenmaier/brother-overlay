@@ -5,13 +5,14 @@ EAPI=8
 
 inherit rpm linux-info
 
-MY_PR=1
+BR_PR=${PR/r/}
+let BR_PR=( ${BR_PR}-1 )
 MY_PN=dcp1510
 
 DESCRIPTION="Brother printer driver for DCP-1510"
 HOMEPAGE="http://support.brother.com"
-SRC_URI="http://www.brother.com/pub/bsc/linux/dlf/${MY_PN}cupswrapper-${PV}-${MY_PR}.i386.rpm
-	http://www.brother.com/pub/bsc/linux/dlf/${MY_PN}lpr-${PV}-${MY_PR}.i386.rpm"
+SRC_URI="http://www.brother.com/pub/bsc/linux/dlf/${MY_PN}cupswrapper-${PV}-${BR_PR}.i386.rpm
+	http://www.brother.com/pub/bsc/linux/dlf/${MY_PN}lpr-${PV}-${BR_PR}.i386.rpm"
 
 LICENSE="brother-eula GPL-2"
 

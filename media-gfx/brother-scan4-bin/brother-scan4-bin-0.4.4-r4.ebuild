@@ -7,13 +7,14 @@ EAPI=8
 
 inherit rpm
 
-MY_PR=${PR/r/}
+BR_PR=${PR/r/}
+let BR_PR=( ${BR_PR}-1 )
 MY_PN=brscan4
 
 DESCRIPTION="Brother scanner tool version 4"
 HOMEPAGE="http://support.brother.com/g/s/id/linux/en/index.html"
-SRC_URI="amd64? ( http://download.brother.com/welcome/dlf006648/${MY_PN}-${PV}-${MY_PR}.x86_64.rpm )
-	x86? (	http://download.brother.com/welcome/dlf006647/${MY_PN}-${PV}-${MY_PR}.i386.rpm )"
+SRC_URI="amd64? ( http://download.brother.com/welcome/dlf006648/${MY_PN}-${PV}-${BR_PR}.x86_64.rpm )
+	x86? (	http://download.brother.com/welcome/dlf006647/${MY_PN}-${PV}-${BR_PR}.i386.rpm )"
 LICENSE="GPL-2 brother-eula no-source-code"
 SLOT="0"
 
