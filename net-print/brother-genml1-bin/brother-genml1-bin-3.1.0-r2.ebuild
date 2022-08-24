@@ -27,6 +27,8 @@ DEPEND="net-print/cups
 		sys-auth/nss-mdns )"
 RDEPEND="${DEPEND}"
 
+PATCHES=( ${FILESDIR}/brother_lpdwrapper_BrGenML1.patch )
+
 S=${WORKDIR}
 
 pkg_setup() {
@@ -43,13 +45,6 @@ pkg_setup() {
 
 src_unpack() {
 	rpm_unpack ${A}
-}
-
-src_prepare() {
-	# adapted from the archlinux package
-	# https://aur.archlinux.org/packages/brother-brgenml1/
-	epatch "${FILESDIR}/brother_lpdwrapper_BrGenML1.patch"
-	default
 }
 
 src_install() {
