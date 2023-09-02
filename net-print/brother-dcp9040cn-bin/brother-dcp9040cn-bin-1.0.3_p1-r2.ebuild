@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -67,7 +67,7 @@ src_install() {
 
 	mkdir -p "${D}/var/spool/lpd" || die
 	mkdir -p "${D}/usr/libexec/cups/filter" || die
-	( ln -s "${D}/usr/lib64/cups/filter/brlpdwrapper${MY_PRINTER}" "${D}/usr/libexec/cups/filter/brlpdwrapper${MY_PRINTER}" ) || die
+	( ln -s "../../../lib64/cups/filter/brlpdwrapper${MY_PRINTER}" "${D}/usr/libexec/cups/filter/brlpdwrapper${MY_PRINTER}" ) || die
 }
 
 pkg_postinst() {

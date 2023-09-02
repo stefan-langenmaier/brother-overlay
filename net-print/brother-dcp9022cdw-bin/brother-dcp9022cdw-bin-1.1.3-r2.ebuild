@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -47,7 +47,7 @@ src_install() {
 	sed -n 110,260p "${D}"/opt/brother/Printers/dcp9022cdw/cupswrapper/cupswrapperdcp9022cdw | sed 's/${printer_model}/dcp9022cdw/g;s/${device_model}/Printers/g;s/${printer_name}/DCP9022CDW/g;s/\\//g' > "${D}"/usr/libexec/cups/filter/brother_lpdwrapper_dcp9022cdw || die
 	chmod 0755 "${D}"/usr/libexec/cups/filter/brother_lpdwrapper_dcp9022cdw || die
 
-	( ln -s "${D}"/opt/brother/Printers/dcp9022cdw/cupswrapper/brother_dcp9022cdw_printer_en.ppd "${D}"/usr/share/cups/model/Brother/brother_dcp9022cdw_printer_en.ppd ) || die
+	( ln -s ../../../../../opt/brother/Printers/dcp9022cdw/cupswrapper/brother_dcp9022cdw_printer_en.ppd "${D}"/usr/share/cups/model/Brother/brother_dcp9022cdw_printer_en.ppd ) || die
 }
 
 pkg_postinst() {

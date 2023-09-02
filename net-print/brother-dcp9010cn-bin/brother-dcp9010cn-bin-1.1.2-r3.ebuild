@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -47,7 +47,7 @@ src_install() {
 	sed -n 110,260p "${D}"/opt/brother/Printers/dcp9010cn/cupswrapper/cupswrapperdcp9010cn | sed 's/${printer_model}/dcp9010cn/g;s/${device_model}/Printers/g;s/${printer_name}/DCP9010CN/g;s/\\//g' > "${D}"/usr/libexec/cups/filter/brlpdwrapperdcp9010cn || die
 	chmod 0755 "${D}"/usr/libexec/cups/filter/brlpdwrapperdcp9010cn || die
 
-	( ln -s "${D}"/opt/brother/Printers/dcp9010cn/cupswrapper/brother_dcp9010cn_printer_en.ppd "${D}"/usr/share/cups/model/Brother/brother_dcp9010cn_printer_en.ppd ) || die
+	( ln -s ../../../../../opt/brother/Printers/dcp9010cn/cupswrapper/brother_dcp9010cn_printer_en.ppd "${D}"/usr/share/cups/model/Brother/brother_dcp9010cn_printer_en.ppd ) || die
 }
 
 pkg_postinst() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,5 +44,5 @@ src_install() {
 	cp -r opt "${D}" || die
 	cp -r usr "${D}" || die
 
-	( ln -s "${D}"opt/brother/Printers/dcpj715w/cupswrapper/brother_dcpj715w_printer_en.ppd "${D}"usr/share/cups/model/Brother/brother_dcpj715w_printer_en.ppd ) || die
+	( ln -s ../../../../../opt/brother/Printers/dcpj715w/cupswrapper/brother_dcpj715w_printer_en.ppd "${D}"usr/share/cups/model/Brother/brother_dcpj715w_printer_en.ppd ) || die
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,8 +9,7 @@ PRINTER_MODEL=${PRINTER_MODEL%-*}
 
 DESCRIPTION="Brother printer driver for ${PRINTER_MODEL}"
 HOMEPAGE="http://support.brother.com/g/b/downloadtop.aspx?c=us&lang=en&prod=${PRINTER_MODEL}_all"
-SRC_URI="http://download.brother.com/welcome/dlf103216/${PRINTER_MODEL}lpr-1.2.0-0.i386.rpm
-http://download.brother.com/welcome/dlf103225/${PRINTER_MODEL}cupswrapper-1.3.0-0.i386.rpm"
+SRC_URI="https://download.brother.com/welcome/dlf103955/${PRINTER_MODEL}pdrv-1.0.2-0.i386.rpm"
 RESTRICT="mirror strip"
 
 LICENSE="brother-eula"
@@ -47,7 +46,7 @@ src_install() {
 	exeinto opt/brother/Printers/${PRINTER_MODEL}/cupswrapper
 	doexe "${S}"/opt/brother/Printers/${PRINTER_MODEL}/cupswrapper/brother_lpdwrapper_${PRINTER_MODEL}
 	mkdir -p "${D}/usr/libexec/cups/filter" || die
-	( ln -s "${D}opt/brother/Printers/${PRINTER_MODEL}/cupswrapper/brother_lpdwrapper_${PRINTER_MODEL}" "${D}/usr/libexec/cups/filter/brother_lpdwrapper_${PRINTER_MODEL}" ) || die
+	( ln -s "../../../../opt/brother/Printers/${PRINTER_MODEL}/cupswrapper/brother_lpdwrapper_${PRINTER_MODEL}" "${D}/usr/libexec/cups/filter/brother_lpdwrapper_${PRINTER_MODEL}" ) || die
 
 	insinto usr/share/ppd/Brother
 	doins "${S}"/opt/brother/Printers/${PRINTER_MODEL}/cupswrapper/brother_${PRINTER_MODEL}_printer_en.ppd

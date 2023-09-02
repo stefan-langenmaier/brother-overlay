@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -52,7 +52,7 @@ src_install() {
 	exeinto opt/brother/Printers/${PRINTER_MODEL}/cupswrapper
 	doexe "${S}"/opt/brother/Printers/${PRINTER_MODEL}/cupswrapper/brother_lpdwrapper_${PRINTER_MODEL}
 	mkdir -p "${D}/usr/libexec/cups/filter" || die
-	( ln -s "${D}/opt/brother/Printers/${PRINTER_MODEL}/cupswrapper/brother_lpdwrapper_${PRINTER_MODEL}" "${D}/usr/libexec/cups/filter/brother_lpdwrapper_${PRINTER_MODEL}" ) || die
+	( ln -s "../../../../opt/brother/Printers/${PRINTER_MODEL}/cupswrapper/brother_lpdwrapper_${PRINTER_MODEL}" "${D}/usr/libexec/cups/filter/brother_lpdwrapper_${PRINTER_MODEL}" ) || die
 
 	insinto usr/share/ppd/Brother
 	doins "${S}"/opt/brother/Printers/${PRINTER_MODEL}/cupswrapper/brother_${PRINTER_MODEL}_printer_en.ppd
