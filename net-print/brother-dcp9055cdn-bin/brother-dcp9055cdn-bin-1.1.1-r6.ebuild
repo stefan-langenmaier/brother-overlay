@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -47,5 +47,5 @@ src_install() {
 	sed -n 94,232p "${D}usr/local/Brother/Printer/${MODEL}/cupswrapper/cupswrapper${MODEL}" | sed 's/${printer_model}/dcp9055cdn/g;s/${device_model}/Printer/g;s/${printer_name}/DCP9055CDN/g;s/\\//g' > "${D}usr"/libexec/cups/filter/brlpdwrapperdcp9055cdn || die
 	chmod 0755 "${D}"usr/libexec/cups/filter/brlpdwrapperdcp9055cdn || die
 
-	( ln -s "${D}"usr/local/Brother/Printer/${MODEL}/cupswrapper/${MODEL}.ppd "${D}"usr/share/cups/model/Brother/brother_${MODEL}_printer_en.ppd ) || die
+	( ln -s ../../../../local/Brother/Printer/${MODEL}/cupswrapper/${MODEL}.ppd "${D}"usr/share/cups/model/Brother/brother_${MODEL}_printer_en.ppd ) || die
 }
