@@ -7,7 +7,7 @@ inherit rpm multilib
 PRINTER_MODEL=${PN#*-}
 PRINTER_MODEL=${PRINTER_MODEL%-*}
 
-DESCRIPTION="Brother printer drive for ${PRINTER_MODEL}"
+DESCRIPTION="Brother printer driver for ${PRINTER_MODEL}"
 HOMEPAGE="https://support.brother.com/g/b/downloadhowto.aspx?c=us&lang=en&prod=${PRINTER_MODEL}_us_eu_as"
 SRC_URI="
 	https://download.brother.com/welcome/dlf103949/${PRINTER_MODEL}pdrv-1.0.2-0.i386.rpm
@@ -30,6 +30,14 @@ S="${WORKDIR}"
 
 src_unpack() {
 	rpm_unpack ${A}
+}
+
+src_prepare() {
+	default
+	sed -i'' \
+		-e "s:my \$PRINTER=.*:my \$PRINTER='${PRINTER_MODEL}';:" \
+		-e 's:$PRINTER =~ .*::' \
+		"${S}"/opt/brother/Printers/${PRINTER_MODEL}/cupswrapper/brother_lpdwrapper_${PRINTER_MODEL}
 }
 
 src_install() {
