@@ -9,8 +9,8 @@ PRINTER_MODEL=${PRINTER_MODEL%-*}
 
 DESCRIPTION="Brother printer driver for ${PRINTER_MODEL}"
 HOMEPAGE="http://support.brother.com/g/b/downloadtop.aspx?c=us&lang=en&prod=${PRINTER_MODEL}_all"
-SRC_URI="http://download.brother.com/welcome/dlf103216/${PRINTER_MODEL}lpr-1.2.0-0.i386.rpm
-http://download.brother.com/welcome/dlf103225/${PRINTER_MODEL}cupswrapper-1.3.0-0.i386.rpm"
+SRC_URI="http://download.brother.com/welcome/dlf103216/${PRINTER_MODEL}lpr-1.5.0-0.i386.rpm
+http://download.brother.com/welcome/dlf103225/${PRINTER_MODEL}cupswrapper-1.5.0-0.i386.rpm"
 RESTRICT="mirror strip"
 
 LICENSE="brother-eula"
@@ -37,7 +37,7 @@ src_install() {
 	doexe "${S}"/opt/brother/Printers/${PRINTER_MODEL}/lpd/*
 
 	# Printer configuration utility
-	dobin "${S}"/usr/bin/brprintconf_${PRINTER_MODEL}
+	dobin "${S}"/opt/brother/Printers/${PRINTER_MODEL}/lpd/i686/brprintconf_${PRINTER_MODEL}
 
 	# Install wrapping tools for CUPS
 	exeinto opt/brother/Printers/${PRINTER_MODEL}/cupswrapper
