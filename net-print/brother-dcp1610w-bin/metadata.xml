@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<!--
-# $Id$
--->
 <pkgmetadata>
-<longdescription>Printer driver for Brother DCP-1610W</longdescription>
-<use>
-</use>
+  <!-- maintainer-needed -->
+  <longdescription>Brother DCP-1610W lpr+cupswrapper (printer) drivers</longdescription>
+  <use>
+    <flag name="metric">Use A4 as default paper type, instead of Letter.</flag>
+    <flag name="debug">Default DEBUG=1 in wrapper script to save a log in /tmp</flag>
+  </use>
 </pkgmetadata>
