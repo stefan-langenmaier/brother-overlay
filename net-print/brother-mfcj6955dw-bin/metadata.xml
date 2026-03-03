@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>Brother MFC-J6955DW printer driver (lpr + cupswrapper)</longdescription>
+	<use>
+		<flag name="metric">Use A4 as default paper type, instead of Letter.</flag>
+	</use>
+</pkgmetadata>
