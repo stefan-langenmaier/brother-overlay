@@ -1,8 +1,8 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit rpm multilib
+inherit rpm
 
 PRINTER_MODEL=${PN#*-}
 PRINTER_MODEL=${PRINTER_MODEL%-*}
@@ -28,16 +28,24 @@ src_unpack() {
 }
 
 src_install() {
-	has_multilib_profile && ABI=x86
+	local arch
+	if use amd64; then
+		arch="x86_64"
+	else
+		arch="i686"
+	fi
 
 	insinto opt/brother/Printers/${PRINTER_MODEL}
 	doins -r "${S}"/opt/brother/Printers/${PRINTER_MODEL}/inf
 
 	exeinto opt/brother/Printers/${PRINTER_MODEL}/lpd
-	doexe "${S}"/opt/brother/Printers/${PRINTER_MODEL}/lpd/*
+	doexe "${S}"/opt/brother/Printers/${PRINTER_MODEL}/lpd/filter_${PRINTER_MODEL}
+	doexe \
+		"${S}"/opt/brother/Printers/${PRINTER_MODEL}/lpd/${arch}/br${PRINTER_MODEL}filter
 
 	# Printer configuration utility
-	dobin "${S}"/opt/brother/Printers/${PRINTER_MODEL}/lpd/i686/brprintconf_${PRINTER_MODEL}
+	dobin \
+		"${S}"/opt/brother/Printers/${PRINTER_MODEL}/lpd/${arch}/brprintconf_${PRINTER_MODEL}
 
 	# Install wrapping tools for CUPS
 	exeinto opt/brother/Printers/${PRINTER_MODEL}/cupswrapper
