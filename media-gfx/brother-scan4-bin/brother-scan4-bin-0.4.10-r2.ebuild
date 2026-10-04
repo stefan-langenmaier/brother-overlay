@@ -72,6 +72,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	udev_reload
+
 	if ! has_version sys-auth/consolekit[acl] && \
 		! has_version sys-auth/elogind[acl] && \
 		! has_version sys-apps/systemd[acl]
@@ -82,4 +84,8 @@ pkg_postinst() {
 	elog "To add a network scanner to sane, run:"
 	elog "brsaneconfig4 -a name=(name your device) model=(model name) ip=xx.xx.xx.xx"
 	elog "or simply run brsaneconfig4 for more options"
+}
+
+pkg_postrm() {
+	udev_reload
 }
