@@ -8,21 +8,25 @@ EAPI=8
 RPM_COMPRESS_TYPE=none
 inherit rpm udev
 
-BUILD=1
+BUILD=2
 MY_PN=brscan4
 
 DESCRIPTION="Brother scanner tool version 4"
 HOMEPAGE="http://support.brother.com/g/s/id/linux/en/index.html"
-SRC_URI="amd64? ( http://download.brother.com/welcome/dlf006648/${MY_PN}-${PV}-${BUILD}.x86_64.rpm )
-	x86? (	http://download.brother.com/welcome/dlf006647/${MY_PN}-${PV}-${BUILD}.i386.rpm )
-	http://download.brother.com/welcome/dlf006653/brother-udev-rule-type1-1.0.2-0.noarch.rpm"
+SRC_URI="
+	amd64? ( https://download.brother.com/welcome/dlf105203/${MY_PN}-${PV}-${BUILD}.x86_64.rpm )
+	x86? ( https://download.brother.com/welcome/dlf105202/${MY_PN}-${PV}-${BUILD}.i386.rpm )
+	http://download.brother.com/welcome/dlf006653/brother-udev-rule-type1-1.0.2-0.noarch.rpm
+"
+
 S="${WORKDIR}"
 
 LICENSE="GPL-2 brother-eula no-source-code"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 
-IUSE="usb zeroconf"
+IUSE="gui usb +zeroconf"
+REQUIRED_USE="gui? ( zeroconf )"
 RESTRICT="mirror strip"
 
 RDEPEND="
@@ -30,7 +34,11 @@ RDEPEND="
 	sys-libs/glibc
 	virtual/libusb:0
 
-	zeroconf? ( net-dns/avahi
+	gui? (
+		dev-libs/glib:2
+		x11-libs/gtk+:2 )
+	zeroconf? (
+		net-dns/avahi
 		sys-auth/nss-mdns )
 "
 
@@ -52,8 +60,11 @@ src_install() {
 
 	exeinto ${brscan4dir}
 	doexe brsaneconfig4
-	doexe brscan_gnetconfig
-	doexe brscan_cnetconfig
+
+	if use zeroconf; then
+		use gui && doexe brscan_gnetconfig
+		doexe brscan_cnetconfig
+	fi
 
 	# Install necessary symlinks (as found in rpm and used by brsaneconfig4)
 	dosym ../../${brscan4dir}/brsaneconfig4 /usr/bin/brsaneconfig4
@@ -74,8 +85,7 @@ src_install() {
 pkg_postinst() {
 	udev_reload
 
-	if ! has_version sys-auth/consolekit[acl] && \
-		! has_version sys-auth/elogind[acl] && \
+	if ! has_version sys-auth/elogind[acl] && \
 		! has_version sys-apps/systemd[acl]
 	then
 		elog "You may need to be in the scanner or plugdev group in order to use the scanner"

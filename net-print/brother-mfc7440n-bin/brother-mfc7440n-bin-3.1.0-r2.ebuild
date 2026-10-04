@@ -17,12 +17,12 @@ SLOT="0"
 
 KEYWORDS="amd64 x86"
 
-IUSE="avahi"
+IUSE="zeroconf"
 
 RESTRICT="mirror strip"
 
 DEPEND="net-print/cups
-	avahi? ( net-dns/avahi
+	zeroconf? ( net-dns/avahi
 		sys-auth/nss-mdns )"
 RDEPEND="${DEPEND}"
 

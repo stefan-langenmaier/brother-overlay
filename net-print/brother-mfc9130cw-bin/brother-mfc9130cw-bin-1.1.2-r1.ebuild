@@ -18,12 +18,12 @@ SLOT="0"
 
 KEYWORDS="amd64"
 
-IUSE="+avahi"
+IUSE="+zeroconf"
 
 RESTRICT="mirror strip"
 
 DEPEND="net-print/cups
-	avahi? ( sys-auth/nss-mdns
+	zeroconf? ( sys-auth/nss-mdns
 		net-dns/avahi
 		)"
 RDEPEND="${DEPEND}"
@@ -50,11 +50,11 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "If you have the avahi use flag enabled"
+	einfo "If you have the zeroconf use flag enabled"
 	einfo "then you have to edit the file /etc/nsswitch.conf and modify the hosts line"
 	einfo "hosts:       files mdns_minimal dns mdns"
 	einfo "and you have to add .local to the printer name in cups, like ldp://BRN1234.local/binary_p1"
-	einfo "If not using Avahi, you have to hardcode the IP address into cups"
+	einfo "If not using zeroconf, you have to hardcode the IP address into cups"
 	einfo "Open a web browser and go to http://localhost:631/printers"
 	einfo "Click \"Modify Printer\" and set following parameters."
 	einfo "- \"LPD/LPR Host or Printer\" or \"AppSocket/HP JetDirect\" for Device"
