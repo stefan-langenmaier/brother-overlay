@@ -23,7 +23,7 @@ S="${WORKDIR}"
 
 LICENSE="GPL-2 brother-eula no-source-code"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="-* ~amd64 ~x86"
 
 IUSE="gui usb +zeroconf"
 REQUIRED_USE="gui? ( zeroconf )"
