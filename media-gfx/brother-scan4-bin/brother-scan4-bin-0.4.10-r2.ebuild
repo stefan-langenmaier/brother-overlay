@@ -20,14 +20,14 @@ SLOT="0"
 
 KEYWORDS="~amd64 ~x86"
 RESTRICT="mirror strip"
-IUSE="usb avahi"
+IUSE="usb zeroconf"
 
 RDEPEND="
 	net-libs/libnsl
 	media-gfx/sane-backends[usb?]
 	virtual/libusb:0
 
-	avahi? ( net-dns/avahi
+	zeroconf? ( net-dns/avahi
 		sys-auth/nss-mdns )
 "
 DEPEND=""

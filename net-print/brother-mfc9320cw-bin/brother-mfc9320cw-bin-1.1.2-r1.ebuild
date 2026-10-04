@@ -18,12 +18,12 @@ SLOT="0"
 
 KEYWORDS="amd64"
 
-IUSE="+avahi"
+IUSE="+zeroconf"
 
 RESTRICT="mirror strip"
 
 DEPEND="net-print/cups
-	avahi? ( sys-auth/nss-mdns
+	zeroconf? ( sys-auth/nss-mdns
 		net-dns/avahi
 		)"
 RDEPEND="${DEPEND}"
@@ -51,7 +51,7 @@ src_install() {
 
 pkg_postinst() {
 	einfo "You have to hardcode the ip address in Cups"
-	einfo "except if you have the avahi use flag enabled"
+	einfo "except if you have the zeroconf use flag enabled"
 	einfo "then you have to edit the file /etc/nsswitch.conf and modify the hosts line"
 	einfo "hosts:       files mdns_minimal dns mdns"
 	einfo "and you have to add .local to the printer name in cups, like ldp://BRN1234.local/BINARY_P1"
