@@ -15,12 +15,14 @@ HOMEPAGE="http://support.brother.com/g/s/id/linux/en/index.html"
 SRC_URI="amd64? ( http://download.brother.com/welcome/dlf006648/${MY_PN}-${PV}-${BUILD}.x86_64.rpm )
 	x86? (	http://download.brother.com/welcome/dlf006647/${MY_PN}-${PV}-${BUILD}.i386.rpm )
 	http://download.brother.com/welcome/dlf006653/brother-udev-rule-type1-1.0.2-0.noarch.rpm"
+S="${WORKDIR}"
+
 LICENSE="GPL-2 brother-eula no-source-code"
 SLOT="0"
-
 KEYWORDS="amd64 x86"
-RESTRICT="mirror strip"
+
 IUSE="usb zeroconf"
+RESTRICT="mirror strip"
 
 RDEPEND="
 	net-libs/libnsl
@@ -30,11 +32,8 @@ RDEPEND="
 	zeroconf? ( net-dns/avahi
 		sys-auth/nss-mdns )
 "
-DEPEND=""
 
 PATCHES=( "${FILESDIR}/${PN}-fix-udev-rules.patch" )
-
-S="${WORKDIR}"
 
 src_install() {
 	local brscan4dir="opt/brother/scanner/brscan4"
