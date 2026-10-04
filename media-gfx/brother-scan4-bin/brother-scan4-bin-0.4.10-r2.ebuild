@@ -26,7 +26,6 @@ IUSE="usb zeroconf"
 RESTRICT="mirror strip"
 
 RDEPEND="
-	net-libs/libnsl
 	media-gfx/sane-backends[usb?]
 	virtual/libusb:0
 
