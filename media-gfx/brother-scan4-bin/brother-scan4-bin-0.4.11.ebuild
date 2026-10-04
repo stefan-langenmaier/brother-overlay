@@ -24,7 +24,8 @@ LICENSE="GPL-2 brother-eula no-source-code"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="usb zeroconf"
+IUSE="gui usb +zeroconf"
+REQUIRED_USE="gui? ( zeroconf )"
 RESTRICT="mirror strip"
 
 RDEPEND="
@@ -32,10 +33,12 @@ RDEPEND="
 	media-gfx/sane-backends[usb?]
 	virtual/libusb:0
 
+	gui? (
+		dev-libs/glib:2
+		x11-libs/gtk+:2 )
 	zeroconf? (
 		net-dns/avahi
-		sys-auth/nss-mdns
-	)
+		sys-auth/nss-mdns )
 "
 
 PATCHES=( "${FILESDIR}/${PN}-fix-udev-rules.patch" )
@@ -56,8 +59,11 @@ src_install() {
 
 	exeinto ${brscan4dir}
 	doexe brsaneconfig4
-	doexe brscan_gnetconfig
-	doexe brscan_cnetconfig
+
+	if use zeroconf; then
+		use gui && doexe brscan_gnetconfig
+		doexe brscan_cnetconfig
+	fi
 
 	# Install necessary symlinks (as found in rpm and used by brsaneconfig4)
 	dosym ../../${brscan4dir}/brsaneconfig4 /usr/bin/brsaneconfig4
