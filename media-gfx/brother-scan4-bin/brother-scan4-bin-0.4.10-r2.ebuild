@@ -18,7 +18,7 @@ SRC_URI="amd64? ( http://download.brother.com/welcome/dlf006648/${MY_PN}-${PV}-$
 LICENSE="GPL-2 brother-eula no-source-code"
 SLOT="0"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 RESTRICT="mirror strip"
 IUSE="usb zeroconf"
 
