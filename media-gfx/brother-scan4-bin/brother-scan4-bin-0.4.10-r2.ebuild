@@ -5,6 +5,7 @@
 
 EAPI=8
 
+RPM_COMPRESS_TYPE=none
 inherit rpm udev
 
 BUILD=1
