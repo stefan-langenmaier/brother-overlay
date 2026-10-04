@@ -31,6 +31,7 @@ RESTRICT="mirror strip"
 
 RDEPEND="
 	media-gfx/sane-backends[usb?]
+	sys-libs/glibc
 	virtual/libusb:0
 
 	gui? (
